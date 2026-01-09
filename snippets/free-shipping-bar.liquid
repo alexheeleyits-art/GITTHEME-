@@ -40,7 +40,19 @@ being eligible for free shipping.
     {%- comment -%}The span below is the placeholder where the content will be inserted in JS{%- endcomment -%}
     <span class="free-shipping-bar__text text-subdued">&nbsp;</span>
     {%- if show_progress -%}
-      <progress-bar class="progress-bar free-shipping-bar__progress" aria-valuenow="{{ calculated_total_price }}" aria-valuemax="{{ threshold_cents }}" aria-valuemin="0"></progress-bar>
+      <div class="free-shipping-bar__track" aria-hidden="true">
+        <progress-bar class="progress-bar free-shipping-bar__progress" aria-valuenow="{{ calculated_total_price }}" aria-valuemax="{{ threshold_cents }}" aria-valuemin="0"></progress-bar>
+        <span class="free-shipping-bar__icon">
+          <svg viewBox="0 0 48 24" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true">
+            <rect x="1" y="6" width="30" height="11" rx="2" fill="currentColor"></rect>
+            <rect x="31" y="9" width="12" height="8" rx="2" fill="currentColor"></rect>
+            <rect x="34" y="11" width="5" height="4" rx="1" fill="rgb(var(--background))"></rect>
+            <circle cx="12" cy="19" r="3" fill="currentColor"></circle>
+            <circle cx="36" cy="19" r="3" fill="currentColor"></circle>
+          </svg>
+        </span>
+        <span class="free-shipping-bar__end">Free shipping</span>
+      </div>
     {%- endif -%}
   </free-shipping-bar>
 {%- endif -%}

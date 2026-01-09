@@ -1474,10 +1474,10 @@ var FreeShippingBar = class extends HTMLElement {
     return ["threshold", "total-price"];
   }
   connectedCallback() {
-    document.addEventListener("cart:change", __privateGet(this, _onCartChangedListener));
+    document.documentElement.addEventListener("cart:change", __privateGet(this, _onCartChangedListener));
   }
   disconnectedCallback() {
-    document.removeEventListener("cart:change", __privateGet(this, _onCartChangedListener));
+    document.documentElement.removeEventListener("cart:change", __privateGet(this, _onCartChangedListener));
   }
   get totalPrice() {
     return parseFloat(this.getAttribute("total-price"));
@@ -1494,17 +1494,20 @@ _currencyFormatter = new WeakMap();
 _threshold = new WeakMap();
 _FreeShippingBar_instances = new WeakSet();
 updateMessage_fn = function() {
-  const messageElement = this.querySelector("span");
+  const messageElement = this.querySelector(".free-shipping-bar__text") || this.querySelector("span");
   const progressBar = this.querySelector("progress-bar");
   const threshold = __privateGet(this, _threshold);
+  const effectiveTotal = Math.max(0, this.totalPrice);
+  const progressValue = threshold > 0 ? Math.min(1, effectiveTotal / threshold) : 1;
+  this.style.setProperty("--free-shipping-progress", progressValue);
   if (progressBar) {
     progressBar.valueMax = threshold;
-    progressBar.valueNow = this.totalPrice;
+    progressBar.valueNow = effectiveTotal;
   }
-  if (this.totalPrice >= threshold) {
+  if (effectiveTotal >= threshold) {
     messageElement.innerHTML = this.getAttribute("reached-message");
   } else {
-    const replacement = `${__privateGet(this, _currencyFormatter).format((threshold - this.totalPrice) / 100).replace(/\$/g, "$$$$")}`;
+    const replacement = `${__privateGet(this, _currencyFormatter).format((threshold - effectiveTotal) / 100).replace(/\$/g, "$$$$")}`;
     messageElement.innerHTML = this.getAttribute("unreached-message").replace(new RegExp("({{.*}})", "g"), replacement);
   }
 };
