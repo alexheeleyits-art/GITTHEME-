@@ -43,11 +43,7 @@ being eligible for free shipping.
       <div class="free-shipping-bar__track" aria-hidden="true">
         <progress-bar class="progress-bar free-shipping-bar__progress" aria-valuenow="{{ calculated_total_price }}" aria-valuemax="{{ threshold_cents }}" aria-valuemin="0"></progress-bar>
         <span class="free-shipping-bar__icon">
-<<<<<<< HEAD
-          {{- 'free-shipping-lorry' | asset_url | image_tag: class: 'free-shipping-bar__icon-image', alt: '', loading: 'lazy' -}}
-=======
           <img class="free-shipping-bar__icon-image" src="{{ 'free-shipping-lorry.png' | asset_url }}" alt="" loading="lazy">
->>>>>>> 2fcebad (vv)
         </span>
       </div>
     {%- endif -%}
