@@ -2214,7 +2214,7 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
 
 .collection-promo-card {
   display: grid;
-  gap: 1.25rem;
+  gap: 0;
   align-content: start;
 }
 
@@ -2241,16 +2241,6 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
   display: block;
 }
 
-.collection-promo-card__content {
-  display: grid;
-  gap: .5rem;
-}
-
-.collection-promo-card__content--placeholder {
-  min-height: var(--product-card-info-min-height, 5rem);
-  visibility: hidden;
-}
-
 .collection-promo-card--media-only {
   height: var(--collection-promo-target-height, auto);
 }
@@ -2258,10 +2248,6 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
 .collection-promo-card--media-only .collection-promo-card__media {
   height: 100%;
   aspect-ratio: auto;
-}
-
-.collection-promo-card--media-only .collection-promo-card__content--placeholder {
-  display: none;
 }
 
 .product-card__quick-add-button {

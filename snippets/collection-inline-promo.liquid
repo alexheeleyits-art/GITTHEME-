@@ -7,85 +7,25 @@ Inputs:
 
 {%- liquid
   assign media_image = block.settings.image
-  assign promo_video = block.settings.video
-  assign promo_video_url = block.settings.external_video_url
   assign link = block.settings.link
-  assign heading = block.settings.heading
-  assign text = block.settings.text
-  assign button_label = block.settings.button_label
-  assign autoplay = block.settings.autoplay
-  assign show_controls = block.settings.show_controls
-  assign media_is_video = false
-  assign has_content = false
-
-  if promo_video != blank or promo_video_url != blank
-    assign media_is_video = true
-  endif
-
-  if heading != blank or text != blank or button_label != blank
-    assign has_content = true
-  endif
-
-  assign promo_aspect_ratio = 1
-  if promo_video != blank
-    assign promo_aspect_ratio = promo_video.aspect_ratio
-  elsif media_image != blank
-    assign promo_aspect_ratio = media_image.aspect_ratio
-  endif
 -%}
 
-<article class="collection-promo-card product-card--styled{% unless has_content %} collection-promo-card--media-only{% endunless %}" {% if reveal %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
-  {%- if media_is_video -%}
-    <div class="collection-promo-card__media" style="--promo-aspect-ratio: {{ promo_aspect_ratio }}">
-      {%- if promo_video != blank -%}
-        <video-media {% if autoplay %}autoplay{% endif %} style="--aspect-ratio: {{ promo_aspect_ratio }}">
-          {{- promo_video | video_tag: class: 'collection-promo-card__video', controls: show_controls, playsinline: true, muted: autoplay, loop: autoplay, preload: 'metadata', image_size: '400x' -}}
-        </video-media>
+<article class="collection-promo-card product-card--styled collection-promo-card--media-only" {{ block.shopify_attributes }}>
+  {%- if link != blank -%}
+    <a href="{{ link }}" class="collection-promo-card__media">
+      {%- if media_image != blank -%}
+        {{- media_image | image_url: width: 1200 | image_tag: sizes: '100vw', widths: '240,320,400,480,600,720,840,960,1200', class: 'collection-promo-card__image', draggable: 'false', loading: 'lazy' -}}
       {%- else -%}
-        <video-media host="{{ promo_video_url.type }}" {% if autoplay %}autoplay class="pointer-events-none"{% endif %} style="--aspect-ratio: {{ promo_aspect_ratio }}">
-          <template>
-            {%- if promo_video_url.type == 'youtube' -%}
-              <iframe src="https://www.youtube.com/embed/{{ promo_video_url.id }}?playsinline=1&{% if autoplay %}autoplay=1&controls=0&mute=1&loop=1&{% endif %}playlist={{ promo_video_url.id }}&enablejsapi=1&rel=0&modestbranding=1&origin={{ 'https://' | append: request.host | url_encode }}" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
-            {%- elsif promo_video_url.type == 'vimeo' -%}
-              <iframe src="https://player.vimeo.com/video/{{ promo_video_url.id }}?autopause=1&{% if autoplay %}background=1&autoplay=1&loop=1&muted=1&{% endif %}transparent=0&responsive=1&portrait=0&title=0&byline=0&color={{ settings.text_color | remove_first: '#' }}" allow="autoplay; encrypted-media;" allowfullscreen="allowfullscreen"></iframe>
-            {%- endif -%}
-          </template>
-        </video-media>
+        {{- 'lifestyle-1' | placeholder_svg_tag: 'collection-promo-card__image placeholder' -}}
+      {%- endif -%}
+    </a>
+  {%- else -%}
+    <div class="collection-promo-card__media">
+      {%- if media_image != blank -%}
+        {{- media_image | image_url: width: 1200 | image_tag: sizes: '100vw', widths: '240,320,400,480,600,720,840,960,1200', class: 'collection-promo-card__image', draggable: 'false', loading: 'lazy' -}}
+      {%- else -%}
+        {{- 'lifestyle-1' | placeholder_svg_tag: 'collection-promo-card__image placeholder' -}}
       {%- endif -%}
     </div>
-  {%- else -%}
-    {%- if link != blank -%}
-      <a href="{{ link }}" class="collection-promo-card__media" style="--promo-aspect-ratio: {{ promo_aspect_ratio }}">
-        {%- if media_image != blank -%}
-          {{- media_image | image_url: width: 1200 | image_tag: sizes: '100vw', widths: '240,320,400,480,600,720,840,960,1200', class: 'collection-promo-card__image', draggable: 'false', loading: 'lazy' -}}
-        {%- else -%}
-          {{- 'lifestyle-1' | placeholder_svg_tag: 'collection-promo-card__image placeholder' -}}
-        {%- endif -%}
-      </a>
-    {%- else -%}
-      <div class="collection-promo-card__media" style="--promo-aspect-ratio: {{ promo_aspect_ratio }}">
-        {%- if media_image != blank -%}
-          {{- media_image | image_url: width: 1200 | image_tag: sizes: '100vw', widths: '240,320,400,480,600,720,840,960,1200', class: 'collection-promo-card__image', draggable: 'false', loading: 'lazy' -}}
-        {%- else -%}
-          {{- 'lifestyle-1' | placeholder_svg_tag: 'collection-promo-card__image placeholder' -}}
-        {%- endif -%}
-      </div>
-    {%- endif -%}
   {%- endif -%}
-
-  <div class="collection-promo-card__content{% unless has_content %} collection-promo-card__content--placeholder{% endunless %}"{% unless has_content %} aria-hidden="true"{% endunless %}>
-    {%- if heading != blank -%}
-      <p class="h5">{{ heading }}</p>
-    {%- endif -%}
-
-    {%- if text != blank -%}
-      <div class="rte text-subdued">
-        {{- text -}}
-      </div>
-    {%- endif -%}
-
-    {%- if button_label != blank and link != blank -%}
-      {%- render 'button', content: button_label, href: link, style: 'outline', size: 'sm', subdued: true -%}
-    {%- endif -%}
-  </div>
 </article>
