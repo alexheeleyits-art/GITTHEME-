@@ -49,9 +49,9 @@ Supported variables
       <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
 
       {%- if settings.currency_code_enabled -%}
-        {{- variant.price | money_with_currency -}}
+        {{- variant.price | money_with_currency_without_trailing_zeros -}}
       {%- else -%}
-        {{- variant.price | money -}}
+        {{- variant.price | money_without_trailing_zeros -}}
       {%- endif -%}
     </sale-price>
 
@@ -60,9 +60,9 @@ Supported variables
         <span class="sr-only">{{ 'product.price.regular_price' | t }}</span>
 
         {%- if settings.currency_code_enabled -%}
-          {{- variant.compare_at_price | money_with_currency -}}
+          {{- variant.compare_at_price | money_with_currency_without_trailing_zeros -}}
         {%- else -%}
-          {{- variant.compare_at_price | money -}}
+          {{- variant.compare_at_price | money_without_trailing_zeros -}}
         {%- endif -%}
       </compare-at-price>
     {%- endif -%}
@@ -107,11 +107,11 @@ Supported variables
       endif
 
       if settings.currency_code_enabled
-        assign variant_price = variant.price | money_with_currency
-        assign variant_compare_at_price = variant.compare_at_price | money_with_currency
+        assign variant_price = variant.price | money_with_currency_without_trailing_zeros
+        assign variant_compare_at_price = variant.compare_at_price | money_with_currency_without_trailing_zeros
       else
-        assign variant_price = variant.price | money
-        assign variant_compare_at_price = variant.compare_at_price | money
+        assign variant_price = variant.price | money_without_trailing_zeros
+        assign variant_compare_at_price = variant.compare_at_price | money_without_trailing_zeros
       endif
     -%}
 
