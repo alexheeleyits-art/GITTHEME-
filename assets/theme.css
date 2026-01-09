@@ -3403,12 +3403,15 @@ tr[onclick]:hover {
   position: relative;
   --free-shipping-end-width: 0;
   padding-inline-end: var(--free-shipping-end-width);
+  width: 100%;
+  justify-self: stretch;
 }
 
 .free-shipping-bar__progress {
   border-radius: 999px;
-  height: 3px;
+  height: 4px;
   overflow: hidden;
+  width: 100%;
 }
 
 .free-shipping-bar__progress:before {
