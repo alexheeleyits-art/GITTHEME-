@@ -3395,6 +3395,8 @@ tr[onclick]:hover {
 .cart-drawer .free-shipping-bar__text {
   text-transform: uppercase;
   letter-spacing: .12em;
+  font-size: var(--text-xs);
+  line-height: 1.2;
 }
 
 .free-shipping-bar__track {
@@ -4258,6 +4260,7 @@ product-rerender {
   padding-inline-end: var(--drawer-body-padding-inline);
   text-align: center;
   justify-items: center;
+  gap: .25rem;
 }
 
 .cart-drawer__items {
