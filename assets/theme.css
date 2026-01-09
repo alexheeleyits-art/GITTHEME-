@@ -2247,7 +2247,19 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
 }
 
 .collection-promo-card__content--placeholder {
-  min-height: 3.5rem;
+  min-height: var(--product-card-info-min-height, 5rem);
+  visibility: hidden;
+}
+
+.collection-promo-card--media-only .collection-promo-card__media {
+  grid-row: 1 / -1;
+  height: 100%;
+  aspect-ratio: auto;
+  z-index: 1;
+}
+
+.collection-promo-card--media-only .collection-promo-card__content--placeholder {
+  z-index: 0;
 }
 
 .product-card__quick-add-button {
@@ -8095,7 +8107,8 @@ ul {
 /* FULL BOX WRAPPER + CLICKABLE CARD                  */
 /* -------------------------------------------------- */
 
-.dossier-card {
+.product-card--styled {
+  --product-card-info-min-height: 5rem;
   border: 1px solid rgba(0,0,0,0.08) !important;
   border-radius: 0px;
   padding: 14px 16px 16px 16px;
@@ -8105,13 +8118,13 @@ ul {
 }
 
 /* Hover effect */
-.dossier-card:hover {
+.product-card--styled:hover {
   box-shadow: 0 6px 26px rgba(0,0,0,0.07);
   transform: translateY(-2px);
 }
 
 /* Make the WHOLE card clickable */
-.dossier-card-link {
+.product-card__link {
   display: block !important;
   width: 100%;
   height: 100%;
@@ -8129,12 +8142,12 @@ ul {
 /* IMAGE + MEDIA                                       */
 /* -------------------------------------------------- */
 
-.dossier-media {
+.product-card__figure--styled {
   padding-top: 6px !important;
   margin-bottom: 4px !important;
 }
 
-.dossier-img-main {
+.product-card__image--styled {
   width: 100%;
   height: auto;
   object-fit: contain !important;
@@ -8147,7 +8160,7 @@ ul {
 /* RATING — aligns correctly with/without reviews      */
 /* -------------------------------------------------- */
 
-.dossier-rating {
+.product-card__rating {
   margin: 4px 0 2px 2px !important;
   text-align: left !important;
   min-height: 14px; /* keeps spacing consistent if no rating exists */
@@ -8157,7 +8170,7 @@ ul {
 /* TITLE LEFT + PRICE RIGHT ROW                        */
 /* -------------------------------------------------- */
 
-.dossier-title-price-row {
+.product-card__title-price {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -8167,13 +8180,13 @@ ul {
   margin-bottom: 4px !important;
 }
 
-.dossier-title-left {
+.product-card__title {
   text-align: left;
   font-weight: 700;
   display: inline-block;
 }
 
-.dossier-price-right {
+.product-card__price {
   text-align: right;
   font-weight: 700;
 }
@@ -8188,7 +8201,7 @@ ul {
 /* INSPIRED BY TEXT — reserve 2 lines always          */
 /* -------------------------------------------------- */
 
-.dossier-inspired-left {
+.product-card__inspired {
   width: 100%;
   text-align: left;
   font-size: 11px;
@@ -8213,14 +8226,14 @@ ul {
   padding-top: 0 !important;
 }
 
-.dossier-info {
+.product-card__info--styled {
   margin-top: -2px !important;
   padding-top: 0 !important;
 }
 
 /* ---------- Product Badge Styles ---------- */
 .product-card-wrapper,
-.dossier-card,
+.product-card--styled,
 .card-wrapper,
 .card__media {
   position: relative; /* ensure overlay positioning */

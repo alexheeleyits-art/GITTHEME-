@@ -34,7 +34,7 @@ Inputs:
   endif
 -%}
 
-<article class="collection-promo-card{% unless has_content %} collection-promo-card--media-only{% endunless %}" {% if reveal %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
+<article class="collection-promo-card product-card--styled{% unless has_content %} collection-promo-card--media-only{% endunless %}" {% if reveal %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
   {%- if media_is_video -%}
     <div class="collection-promo-card__media" style="--promo-aspect-ratio: {{ promo_aspect_ratio }}">
       {%- if promo_video != blank -%}

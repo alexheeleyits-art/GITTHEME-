@@ -20,18 +20,18 @@
   endif
 -%}
 
-<product-card class="product-card dossier-card" {% if reveal %}reveal-on-scroll="true"{% endif %} handle="{{ product.handle | escape }}">
+<product-card class="product-card product-card--styled" {% if reveal %}reveal-on-scroll="true"{% endif %} handle="{{ product.handle | escape }}">
 
   {%- comment -%}
   --------------------------------------------------------------------------------------------------------------------
-  PRODUCT MEDIA — Dossier style
+  PRODUCT MEDIA — Custom style
   --------------------------------------------------------------------------------------------------------------------
   {%- endcomment -%}
 
   {% if product.media.size > 0 %}
-    <div class="product-card__figure dossier-media">
+    <div class="product-card__figure product-card__figure--styled">
 
-      <a href="{{ product.url }}" class="product-card__media dossier-image-wrapper" draggable="false" data-instant>
+      <a href="{{ product.url }}" class="product-card__media product-card__media-link" draggable="false" data-instant>
 
         {% capture sizes %}
           (max-width: 699px) 74vw, (max-width: 999px) 38vw, 380px
@@ -48,7 +48,7 @@
           | image_url: width: 900
           | image_tag:
               loading: main_media_loading_strategy,
-              class: "dossier-img-main",
+              class: "product-card__image--styled",
               sizes: sizes,
               widths: "300,400,500,600,700,800,900,1200"
         }}
@@ -82,7 +82,7 @@
       </a>
 
       {% if show_rating %}
-        <div class="dossier-rating">
+        <div class="product-card__rating">
           {%- render 'product-rating',
               product: product,
               show_empty: settings.show_product_rating_if_empty,
@@ -90,7 +90,7 @@
           -%}
         </div>
       {% else %}
-        <div class="dossier-rating"></div>
+        <div class="product-card__rating"></div>
       {% endif %}
 
     </div>
@@ -102,24 +102,24 @@
   --------------------------------------------------------------------------------------------------------------------
   {%- endcomment -%}
 
-  <div class="product-card__info dossier-info">
+  <div class="product-card__info product-card__info--styled">
 
     {% assign inspired_by = product.metafields.custom.inspired_by %}
 
     <!-- TITLE LEFT + PRICE RIGHT -->
-    <div class="dossier-title-price-row">
-      <span class="dossier-title-left">{{ product.title }}</span>
+    <div class="product-card__title-price">
+      <span class="product-card__title">{{ product.title }}</span>
 
       {% if show_prices %}
-        <span class="dossier-price-right">
+        <span class="product-card__price">
 
           {% if product.price_varies %}
-            <span class="dossier-price-from">From</span>
-            <span class="dossier-price-amount">
+            <span class="product-card__price-from">From</span>
+            <span class="product-card__price-amount">
               {{ product.price_min | money }}
             </span>
           {% else %}
-            <span class="dossier-price-amount">
+            <span class="product-card__price-amount">
               {{ product.price | money }}
             </span>
           {% endif %}
@@ -130,7 +130,7 @@
 
     <!-- INSPIRED BY -->
     {% if inspired_by %}
-      <div class="dossier-inspired-left">
+      <div class="product-card__inspired">
         Inspired by {{ inspired_by }}
       </div>
     {% endif %}
