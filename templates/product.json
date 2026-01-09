@@ -1,1 +1,497 @@
-{"sections":{"main":{"type":"main-product","blocks":{"vendor":{"type":"vendor","disabled":true,"settings":{}},"title":{"type":"title","settings":{"heading_tag":"h1"}},"price":{"type":"price","settings":{"show_taxes_notice":false}},"rating_hGRfh6":{"type":"rating","settings":{"show_empty":true,"rating_mode":"rating"}},"separator_3UiGLR":{"type":"separator","settings":{}},"variant_picker":{"type":"variant_picker","settings":{"hide_sold_out_variants":false,"selector_style":"block","swatch_selector_style":"swatch","variant_image_options":"","size_chart_page":""}},"text_yKVaUz":{"type":"text","settings":{"text":"<p>Inspired by {{ product.metafields.custom.inspired_by.value }}<\/p>"}},"liquid_FUr74b":{"type":"liquid","settings":{"liquid":"<div class=\"accordion-links\">\n  <button class=\"accordion-trigger\" data-accordion-index=\"1\">Description<\/button>\n  <button class=\"accordion-trigger\" data-accordion-index=\"2\">Scent Profile<\/button>\n  <button class=\"accordion-trigger\" data-accordion-index=\"3\">Returns<\/button>\n  <button class=\"accordion-trigger\" data-accordion-index=\"4\">Delivery<\/button>\n<\/div>\n\n<script>\ndocument.addEventListener('click', function (e) {\n  const btn = e.target.closest('.accordion-trigger');\n  if (!btn) return;\n\n  const index = btn.dataset.accordionIndex;\n  const accordions = document.querySelectorAll('accordion-disclosure.accordion--lg');\n\n  \/\/ Index offset: nth-of-type is 1-based not 0-based\n  const target = accordions[index - 1];\n  if (!target) return;\n\n  const details = target.querySelector('details');\n  const summary = details.querySelector('summary');\n\n  \/\/ Scroll smoothly to accordion\n  target.scrollIntoView({ behavior: 'smooth', block: 'start' });\n\n  \/\/ If closed, open it by clicking the summary\n  if (details.getAttribute('aria-expanded') === 'false') {\n    summary.click();\n  }\n});\n<\/script>"}},"payment_terms":{"type":"payment_terms","settings":{}},"quantity_selector":{"type":"quantity_selector","disabled":true,"settings":{}},"appstle_subscription_appstle_subscription_product_page_widget_7VNFNx":{"type":"shopify:\/\/apps\/appstle-subscription\/blocks\/appstle-subscription-product-page-widget\/fe257d39-6f88-4f35-ab08-bd437e3aa94e","settings":{}},"buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":false,"show_gift_card_recipient":true,"atc_button_background":"#307a07","atc_button_text_color":"#ffffff","payment_button_background":"","payment_button_text_color":""}},"image_c7VWYP":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Option_2.jpg","alignment":"start","width_mode":"full_width","max_width":300,"mobile_max_width":200}},"revenuehunt_recommender_quiz_v2_chat_button_block_rdYn4U":{"type":"shopify:\/\/apps\/revenuehunt-recommender-quiz\/blocks\/v2-chat-button-block\/672f3d48-fd3b-4227-8778-c6e58c4f8a98","settings":{"chat_color":"#1878b9","chat_icon_color":"#ffffff","chat_position":"bottom-right","chat_hide":false,"chat_dot":true,"chat_greeting":"","chat_z_index":98,"quiz_width":"100","quiz_height":"100","quiz_z_index":100,"popup_close_color":"#777777","quiz_id":""}},"revenuehunt_recommender_quiz_v2_link_quiz_block_6LJMkM":{"type":"shopify:\/\/apps\/revenuehunt-recommender-quiz\/blocks\/v2-link-quiz-block\/672f3d48-fd3b-4227-8778-c6e58c4f8a98","settings":{"quiz_width":"100","quiz_height":"100","quiz_z_index":100,"popup_close_color":"#777777","show_list":true,"quiz_id":""}},"complementary_products":{"type":"complementary_products","settings":{"title":"Pairs well with","products_count":2,"show_below_gallery":true,"stack_products":false,"show_quick_buy":true}},"separator":{"type":"separator","disabled":true,"settings":{}},"accordion_UVR8fW":{"type":"accordion","settings":{"show_below_gallery":true,"icon":"none","title":"Description","content":"{{ product.description }}","liquid":"","page":""}},"accordion_Ytpcff":{"type":"accordion","settings":{"show_below_gallery":true,"icon":"none","title":"Scent Profile","content":"<p>{{ product.metafields.custom.scentprofile | metafield_tag }}<\/p>","liquid":"","page":""}},"accordion_3ArUhL":{"type":"accordion","settings":{"show_below_gallery":true,"icon":"none","title":"Returns & Exchanges","content":"<p>We offer <strong>lifetime returns <\/strong>on all unopened products. <a href=\"\/pages\/delivery-returns\" title=\"Delivery & Returns\">Read More<\/a><\/p>","liquid":"","page":""}},"accordion_fiTzt4":{"type":"accordion","settings":{"show_below_gallery":true,"icon":"none","title":"Delivery Information","content":"<p><strong>Standard Delivery – £3.99<\/strong><br\/>• Delivered in approx. <strong>48 hours<\/strong><br\/>• Fully tracked<\/p><p><strong>Express Delivery – £5.99<\/strong><br\/>• <strong>24-hour delivery<\/strong><br\/>• Order before <strong>3pm (Mon–Fri)<\/strong> for same-day dispatch<br\/>• Fully tracked<\/p><p><strong>Free Delivery<\/strong><br\/>• Orders over <strong>£25<\/strong> qualify for <strong>free standard delivery<\/strong><\/p>","liquid":"","page":""}}},"block_order":["vendor","title","price","rating_hGRfh6","separator_3UiGLR","variant_picker","text_yKVaUz","liquid_FUr74b","payment_terms","quantity_selector","appstle_subscription_appstle_subscription_product_page_widget_7VNFNx","buy_buttons","image_c7VWYP","revenuehunt_recommender_quiz_v2_chat_button_block_rdYn4U","revenuehunt_recommender_quiz_v2_link_quiz_block_6LJMkM","complementary_products","separator","accordion_UVR8fW","accordion_Ytpcff","accordion_3ArUhL","accordion_fiTzt4"],"custom_css":[".color-swatch {--swatch-offset: 2px; --swatch-size: 2.5rem;}",".accordion-links {display: flex; gap: 6px; margin-bottom: 12px;}",".accordion-trigger {background: #000; color: #fff; font-size: 12px; font-weight: 600; padding: 4px 10px; border: none; border-radius: 3px; cursor: pointer; line-height: 1; transition: background 0.15s ease, transform 0.15s ease;}",".accordion-trigger:hover {background: #111; transform: translateY(-1px);}",".accordion-trigger:active {transform: translateY(0);}"],"settings":{"color_scheme":"scheme-2","container_size":"lg","product_info_size":44,"show_sticky_add_to_cart":true,"center_basic_info":false,"desktop_media_layout":"carousel_thumbnails_left","desktop_media_grid_gap":16,"mobile_controls":"dots","enable_media_autoplay":false,"enable_video_looping":false,"enable_image_zoom":true,"max_image_zoom_level":3}},"related_products_GeRiiB":{"type":"related-products","name":"t:sections.related_products.presets.related_products.name","settings":{"color_scheme":"scheme-2","separate_section_with_border":false,"hide_product_information":false,"stack_products":true,"recommendations_count":6,"products_per_row_mobile":"2","products_per_row_desktop":3,"horizontal_spacing_factor":0.8,"vertical_spacing_factor":0.5,"subheading":"","title":"You May Also Love...","content":""}},"17633930800c8869a1":{"type":"_blocks","blocks":{"ai_gen_block_07ee216_DytyWg":{"type":"ai_gen_block_07ee216","settings":{"heading":"As Seen On TikTok","heading_color":"#1c1c1c","heading_size":32,"video_1":"https:\/\/www.tiktok.com\/@inthestyleuk\/video\/7468256900048604448","video_2":"https:\/\/www.tiktok.com\/@inthestyleuk\/video\/7468256900048604448","video_3":"https:\/\/www.tiktok.com\/@inthestyleuk\/video\/7468256900048604448","video_4":"https:\/\/www.tiktok.com\/@inthestyleuk\/video\/7468256900048604448","background_color":"#ffffff","gap":16,"border_radius":8,"columns_mobile":"2"},"blocks":{}}},"block_order":["ai_gen_block_07ee216_DytyWg"],"disabled":true,"settings":{"color_scheme":"scheme-2","separate_section_with_border":true,"remove_vertical_spacing":false,"remove_horizontal_spacing":false}},"faq_fd6MHb":{"type":"faq","blocks":{"category_4iF3XN":{"type":"category","settings":{"title":"Order","icon":"none","icon_width":16}},"question_yx9zTR":{"type":"question","settings":{"question":"Do you ship overseas?","answer":"<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"}},"question_fenPWJ":{"type":"question","settings":{"question":"How long will it take to get my orders?","answer":"<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"}},"question_MAbXfc":{"type":"question","settings":{"question":"Any questions?","answer":"<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"}}},"block_order":["category_4iF3XN","question_yx9zTR","question_fenPWJ","question_MAbXfc"],"disabled":true,"name":"t:sections.faq.presets.faq.name","settings":{"color_scheme":"","separate_section_with_border":true,"show_categories":false,"subheading":"Need help?","title":"Frequently Asked Questions","content":""}},"17631316051f875b15":{"type":"_blocks","blocks":{"ai_gen_block_6e93591_gEgbA3":{"type":"ai_gen_block_6e93591","settings":{"title":"Frequently Asked Questions","title_font":"montserrat_n7","title_size":36,"title_color":"#1c1c1c","subtitle":"Find answers to common questions below","subtitle_size":16,"subtitle_color":"#1c1c1c","text_alignment":"center","question_1":"What is your return policy?","answer_1":"We offer a 30-day return policy on all unused items in their original packaging. Please contact our customer service team to initiate a return.","question_2":"How long does shipping take?","answer_2":"Standard shipping typically takes 5-7 business days. Express shipping options are available at checkout for faster delivery.","question_3":"Do you ship internationally?","answer_3":"Yes, we ship to most countries worldwide. International shipping times and costs vary by destination.","question_4":"How can I track my order?","answer_4":"Once your order ships, you'll receive a tracking number via email. You can use this to track your package on our website or the carrier's site.","question_5":"What payment methods do you accept?","answer_5":"We accept all major credit cards, PayPal, Apple Pay, and Google Pay for your convenience.","question_6":"","answer_6":"","question_7":"","answer_7":"","question_8":"","answer_8":"","question_9":"","answer_9":"","question_10":"","answer_10":"","question_font":"montserrat_n7","question_size":18,"question_color":"#1c1c1c","question_hover_color":"#666666","answer_size":14,"answer_color":"#666666","max_width":800,"section_padding":60,"item_padding":20,"background_color":"#ffffff","border_color":"#e0e0e0","icon_color":"#1c1c1c","heading_text_transform":"uppercase","heading_letter_spacing":10},"blocks":{}}},"block_order":["ai_gen_block_6e93591_gEgbA3"],"disabled":true,"settings":{"color_scheme":"scheme-2","separate_section_with_border":true,"remove_vertical_spacing":false,"remove_horizontal_spacing":false}},"1761662333783de119":{"type":"apps","blocks":{"judge_me_reviews_review_widget_LDkhCP":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{"review_data":"sample_data","max_width":1200,"show_shop_reviews":false,"empty_state":"empty_widget"}}},"block_order":["judge_me_reviews_review_widget_LDkhCP"],"settings":{"color_scheme":"scheme-2","separate_section_with_border":true,"remove_vertical_spacing":false,"remove_horizontal_spacing":false}},"related-products":{"type":"related-products","settings":{"color_scheme":"","separate_section_with_border":true,"hide_product_information":false,"stack_products":false,"recommendations_count":10,"products_per_row_mobile":"2","products_per_row_desktop":4,"horizontal_spacing_factor":1,"vertical_spacing_factor":1,"subheading":"","title":"Related products","content":""}},"faq_rgDPFQ":{"type":"faq","blocks":{"category_wD9MVe":{"type":"category","settings":{"title":"Order","icon":"none","icon_width":16}},"question_R8d8dU":{"type":"question","settings":{"question":"Do you ship overseas?","answer":"<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"}},"question_ExL8HB":{"type":"question","settings":{"question":"How long will it take to get my orders?","answer":"<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"}},"question_TpFKnV":{"type":"question","settings":{"question":"Any question?","answer":"<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"}}},"block_order":["category_wD9MVe","question_R8d8dU","question_ExL8HB","question_TpFKnV"],"disabled":true,"name":"t:sections.faq.presets.faq.name","settings":{"color_scheme":"","separate_section_with_border":true,"show_categories":false,"subheading":"Need help?","title":"Frequently Asked Questions","content":""}}},"order":["main","related_products_GeRiiB","17633930800c8869a1","faq_fd6MHb","17631316051f875b15","1761662333783de119","related-products","faq_rgDPFQ"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h1"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_hGRfh6": {
+          "type": "rating",
+          "settings": {
+            "show_empty": true,
+            "rating_mode": "rating"
+          }
+        },
+        "separator_3UiGLR": {
+          "type": "separator",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "text_yKVaUz": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Inspired by {{ product.metafields.custom.inspired_by.value }}</p>"
+          }
+        },
+        "liquid_FUr74b": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div class=\"accordion-links\">\n  <button class=\"accordion-trigger\" data-accordion-index=\"1\">Description</button>\n  <button class=\"accordion-trigger\" data-accordion-index=\"2\">Scent Profile</button>\n  <button class=\"accordion-trigger\" data-accordion-index=\"3\">Returns</button>\n  <button class=\"accordion-trigger\" data-accordion-index=\"4\">Delivery</button>\n</div>\n\n<script>\ndocument.addEventListener('click', function (e) {\n  const btn = e.target.closest('.accordion-trigger');\n  if (!btn) return;\n\n  const index = btn.dataset.accordionIndex;\n  const accordions = document.querySelectorAll('accordion-disclosure.accordion--lg');\n\n  // Index offset: nth-of-type is 1-based not 0-based\n  const target = accordions[index - 1];\n  if (!target) return;\n\n  const details = target.querySelector('details');\n  const summary = details.querySelector('summary');\n\n  // Scroll smoothly to accordion\n  target.scrollIntoView({ behavior: 'smooth', block: 'start' });\n\n  // If closed, open it by clicking the summary\n  if (details.getAttribute('aria-expanded') === 'false') {\n    summary.click();\n  }\n});\n</script>"
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "appstle_subscription_appstle_subscription_product_page_widget_7VNFNx": {
+          "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-product-page-widget/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "#307a07",
+            "atc_button_text_color": "#ffffff",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "image_c7VWYP": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Option_2.jpg",
+            "collection": "bundles-fragrance",
+            "alignment": "start",
+            "width_mode": "full_width",
+            "max_width": 300,
+            "mobile_max_width": 200
+          }
+        },
+        "revenuehunt_recommender_quiz_v2_chat_button_block_rdYn4U": {
+          "type": "shopify://apps/revenuehunt-recommender-quiz/blocks/v2-chat-button-block/672f3d48-fd3b-4227-8778-c6e58c4f8a98",
+          "settings": {
+            "chat_color": "#1878b9",
+            "chat_icon_color": "#ffffff",
+            "chat_position": "bottom-right",
+            "chat_hide": false,
+            "chat_dot": true,
+            "chat_greeting": "",
+            "chat_z_index": 98,
+            "quiz_width": "100",
+            "quiz_height": "100",
+            "quiz_z_index": 100,
+            "popup_close_color": "#777777",
+            "quiz_id": ""
+          }
+        },
+        "revenuehunt_recommender_quiz_v2_link_quiz_block_6LJMkM": {
+          "type": "shopify://apps/revenuehunt-recommender-quiz/blocks/v2-link-quiz-block/672f3d48-fd3b-4227-8778-c6e58c4f8a98",
+          "settings": {
+            "quiz_width": "100",
+            "quiz_height": "100",
+            "quiz_z_index": 100,
+            "popup_close_color": "#777777",
+            "show_list": true,
+            "quiz_id": ""
+          }
+        },
+        "complementary_products": {
+          "type": "complementary_products",
+          "settings": {
+            "title": "Pairs well with",
+            "products_count": 2,
+            "show_below_gallery": true,
+            "stack_products": false,
+            "show_quick_buy": true
+          }
+        },
+        "separator": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
+        },
+        "accordion_UVR8fW": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": true,
+            "icon": "none",
+            "title": "Description",
+            "content": "{{ product.description }}",
+            "liquid": "",
+            "page": ""
+          }
+        },
+        "accordion_Ytpcff": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": true,
+            "icon": "none",
+            "title": "Scent Profile",
+            "content": "<p>{{ product.metafields.custom.scentprofile | metafield_tag }}</p>",
+            "liquid": "",
+            "page": ""
+          }
+        },
+        "accordion_3ArUhL": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": true,
+            "icon": "none",
+            "title": "Returns & Exchanges",
+            "content": "<p>We offer <strong>lifetime returns </strong>on all unopened products. <a href=\"/pages/delivery-returns\" title=\"Delivery & Returns\">Read More</a></p>",
+            "liquid": "",
+            "page": ""
+          }
+        },
+        "accordion_fiTzt4": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": true,
+            "icon": "none",
+            "title": "Delivery Information",
+            "content": "<p><strong>Standard Delivery – £3.99</strong><br/>• Delivered in approx. <strong>48 hours</strong><br/>• Fully tracked</p><p><strong>Express Delivery – £5.99</strong><br/>• <strong>24-hour delivery</strong><br/>• Order before <strong>3pm (Mon–Fri)</strong> for same-day dispatch<br/>• Fully tracked</p><p><strong>Free Delivery</strong><br/>• Orders over <strong>£25</strong> qualify for <strong>free standard delivery</strong></p>",
+            "liquid": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "rating_hGRfh6",
+        "separator_3UiGLR",
+        "variant_picker",
+        "text_yKVaUz",
+        "liquid_FUr74b",
+        "payment_terms",
+        "quantity_selector",
+        "appstle_subscription_appstle_subscription_product_page_widget_7VNFNx",
+        "buy_buttons",
+        "image_c7VWYP",
+        "revenuehunt_recommender_quiz_v2_chat_button_block_rdYn4U",
+        "revenuehunt_recommender_quiz_v2_link_quiz_block_6LJMkM",
+        "complementary_products",
+        "separator",
+        "accordion_UVR8fW",
+        "accordion_Ytpcff",
+        "accordion_3ArUhL",
+        "accordion_fiTzt4"
+      ],
+      "custom_css": [
+        ".color-swatch {--swatch-offset: 2px; --swatch-size: 2.5rem;}",
+        ".accordion-links {display: flex; gap: 6px; margin-bottom: 12px;}",
+        ".accordion-trigger {background: #000; color: #fff; font-size: 12px; font-weight: 600; padding: 4px 10px; border: none; border-radius: 3px; cursor: pointer; line-height: 1; transition: background 0.15s ease, transform 0.15s ease;}",
+        ".accordion-trigger:hover {background: #111; transform: translateY(-1px);}",
+        ".accordion-trigger:active {transform: translateY(0);}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "container_size": "lg",
+        "product_info_size": 44,
+        "show_sticky_add_to_cart": true,
+        "center_basic_info": false,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "desktop_media_grid_gap": 16,
+        "mobile_controls": "dots",
+        "enable_media_autoplay": false,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3
+      }
+    },
+    "related_products_GeRiiB": {
+      "type": "related-products",
+      "name": "t:sections.related_products.presets.related_products.name",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": false,
+        "hide_product_information": false,
+        "stack_products": true,
+        "recommendations_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "horizontal_spacing_factor": 0.8,
+        "vertical_spacing_factor": 0.5,
+        "subheading": "",
+        "title": "You May Also Love...",
+        "content": ""
+      }
+    },
+    "17633930800c8869a1": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_07ee216_DytyWg": {
+          "type": "ai_gen_block_07ee216",
+          "settings": {
+            "heading": "As Seen On TikTok",
+            "heading_color": "#1c1c1c",
+            "heading_size": 32,
+            "video_1": "https://www.tiktok.com/@inthestyleuk/video/7468256900048604448",
+            "video_2": "https://www.tiktok.com/@inthestyleuk/video/7468256900048604448",
+            "video_3": "https://www.tiktok.com/@inthestyleuk/video/7468256900048604448",
+            "video_4": "https://www.tiktok.com/@inthestyleuk/video/7468256900048604448",
+            "background_color": "#ffffff",
+            "gap": 16,
+            "border_radius": 8,
+            "columns_mobile": "2"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_07ee216_DytyWg"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    },
+    "faq_fd6MHb": {
+      "type": "faq",
+      "blocks": {
+        "category_4iF3XN": {
+          "type": "category",
+          "settings": {
+            "title": "Order",
+            "icon": "none",
+            "icon_width": 16
+          }
+        },
+        "question_yx9zTR": {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship overseas?",
+            "answer": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.</p>"
+          }
+        },
+        "question_fenPWJ": {
+          "type": "question",
+          "settings": {
+            "question": "How long will it take to get my orders?",
+            "answer": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
+          }
+        },
+        "question_MAbXfc": {
+          "type": "question",
+          "settings": {
+            "question": "Any questions?",
+            "answer": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "category_4iF3XN",
+        "question_yx9zTR",
+        "question_fenPWJ",
+        "question_MAbXfc"
+      ],
+      "disabled": true,
+      "name": "t:sections.faq.presets.faq.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "show_categories": false,
+        "subheading": "Need help?",
+        "title": "Frequently Asked Questions",
+        "content": ""
+      }
+    },
+    "17631316051f875b15": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_6e93591_gEgbA3": {
+          "type": "ai_gen_block_6e93591",
+          "settings": {
+            "title": "Frequently Asked Questions",
+            "title_font": "montserrat_n7",
+            "title_size": 36,
+            "title_color": "#1c1c1c",
+            "subtitle": "Find answers to common questions below",
+            "subtitle_size": 16,
+            "subtitle_color": "#1c1c1c",
+            "text_alignment": "center",
+            "question_1": "What is your return policy?",
+            "answer_1": "We offer a 30-day return policy on all unused items in their original packaging. Please contact our customer service team to initiate a return.",
+            "question_2": "How long does shipping take?",
+            "answer_2": "Standard shipping typically takes 5-7 business days. Express shipping options are available at checkout for faster delivery.",
+            "question_3": "Do you ship internationally?",
+            "answer_3": "Yes, we ship to most countries worldwide. International shipping times and costs vary by destination.",
+            "question_4": "How can I track my order?",
+            "answer_4": "Once your order ships, you'll receive a tracking number via email. You can use this to track your package on our website or the carrier's site.",
+            "question_5": "What payment methods do you accept?",
+            "answer_5": "We accept all major credit cards, PayPal, Apple Pay, and Google Pay for your convenience.",
+            "question_6": "",
+            "answer_6": "",
+            "question_7": "",
+            "answer_7": "",
+            "question_8": "",
+            "answer_8": "",
+            "question_9": "",
+            "answer_9": "",
+            "question_10": "",
+            "answer_10": "",
+            "question_font": "montserrat_n7",
+            "question_size": 18,
+            "question_color": "#1c1c1c",
+            "question_hover_color": "#666666",
+            "answer_size": 14,
+            "answer_color": "#666666",
+            "max_width": 800,
+            "section_padding": 60,
+            "item_padding": 20,
+            "background_color": "#ffffff",
+            "border_color": "#e0e0e0",
+            "icon_color": "#1c1c1c",
+            "heading_text_transform": "uppercase",
+            "heading_letter_spacing": 10
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_6e93591_gEgbA3"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    },
+    "1761662333783de119": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_LDkhCP": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_LDkhCP"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "hide_product_information": false,
+        "stack_products": false,
+        "recommendations_count": 10,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": "",
+        "title": "Related products",
+        "content": ""
+      }
+    },
+    "faq_rgDPFQ": {
+      "type": "faq",
+      "blocks": {
+        "category_wD9MVe": {
+          "type": "category",
+          "settings": {
+            "title": "Order",
+            "icon": "none",
+            "icon_width": 16
+          }
+        },
+        "question_R8d8dU": {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship overseas?",
+            "answer": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.</p>"
+          }
+        },
+        "question_ExL8HB": {
+          "type": "question",
+          "settings": {
+            "question": "How long will it take to get my orders?",
+            "answer": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
+          }
+        },
+        "question_TpFKnV": {
+          "type": "question",
+          "settings": {
+            "question": "Any question?",
+            "answer": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "category_wD9MVe",
+        "question_R8d8dU",
+        "question_ExL8HB",
+        "question_TpFKnV"
+      ],
+      "disabled": true,
+      "name": "t:sections.faq.presets.faq.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "show_categories": false,
+        "subheading": "Need help?",
+        "title": "Frequently Asked Questions",
+        "content": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related_products_GeRiiB",
+    "17633930800c8869a1",
+    "faq_fd6MHb",
+    "17631316051f875b15",
+    "1761662333783de119",
+    "related-products",
+    "faq_rgDPFQ"
+  ]
+}
