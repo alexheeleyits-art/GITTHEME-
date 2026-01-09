@@ -3408,7 +3408,7 @@ tr[onclick]:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 1.4rem;
+  height: 3.5rem;
   position: absolute;
   inset-block-start: 50%;
   left: var(--free-shipping-progress-percent, 0%);
