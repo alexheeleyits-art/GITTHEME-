@@ -1500,6 +1500,7 @@ updateMessage_fn = function() {
   const effectiveTotal = Math.max(0, this.totalPrice);
   const progressValue = threshold > 0 ? Math.min(1, effectiveTotal / threshold) : 1;
   this.style.setProperty("--free-shipping-progress", progressValue);
+  this.style.setProperty("--free-shipping-progress-percent", `${progressValue * 100}%`);
   if (progressBar) {
     progressBar.valueMax = threshold;
     progressBar.valueNow = effectiveTotal;

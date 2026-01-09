@@ -232,7 +232,7 @@ LIQUID
                     {%- if promo_blocks.size > 0 -%}
                       {%- for promo_block in promo_blocks -%}
                         {%- if promo_block.settings.position == product_index -%}
-                          {%- render 'collection-inline-promo', block: promo_block, reveal: settings.stagger_products_apparition -%}
+                          {%- render 'collection-inline-promo', block: promo_block -%}
                         {%- endif -%}
                       {%- endfor -%}
                     {%- endif -%}

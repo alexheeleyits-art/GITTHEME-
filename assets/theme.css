@@ -3401,7 +3401,7 @@ tr[onclick]:hover {
   height: 1rem;
   position: absolute;
   inset-block-start: 50%;
-  left: calc(min(var(--free-shipping-progress, 0), 1) * (100% - var(--free-shipping-end-width)));
+  left: var(--free-shipping-progress-percent, 0%);
   translate: -50% -50%;
   transition: left .45s ease-in-out;
 }
@@ -4207,6 +4207,10 @@ product-rerender {
 
 .cart-drawer::part(body) {
   padding-block: 0;
+}
+
+.cart-drawer::part(header) {
+  border-block-end-width: 0;
 }
 
 :is(.cart-drawer:has(.cart-drawer__order-note[open])::part(header), .cart-drawer:has(.cart-drawer__order-note[open])::part(body)) {
