@@ -2245,6 +2245,10 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
   display: block;
 }
 
+.product-info__image-link {
+  display: block;
+}
+
 .collection-promo-card--media-only {
   height: var(--collection-promo-target-height, auto);
 }
@@ -3388,6 +3392,11 @@ tr[onclick]:hover {
   display: block;
 }
 
+.cart-drawer .free-shipping-bar__text {
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
 .free-shipping-bar__track {
   position: relative;
   --free-shipping-end-width: 0;
@@ -4247,6 +4256,8 @@ product-rerender {
   padding-block: .75rem;
   padding-inline-start: var(--drawer-body-padding-inline);
   padding-inline-end: var(--drawer-body-padding-inline);
+  text-align: center;
+  justify-items: center;
 }
 
 .cart-drawer__items {
