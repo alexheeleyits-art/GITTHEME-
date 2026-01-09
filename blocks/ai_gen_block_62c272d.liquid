@@ -1,0 +1,424 @@
+{% doc %}
+  @prompt
+    3 BUTTONS NEXT TO EACH OTHER WITH TEXT ABOVE THME, The paragraph text needs to sit above each indivitual button, the buttons need to remained aligned despite how much text there is
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-three-buttons-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 20px;
+  }
+
+  .ai-three-buttons__container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-three-buttons__wrapper-{{ ai_gen_id }} {
+    display: flex;
+    gap: {{ block.settings.button_spacing }}px;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .ai-three-buttons__item-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .ai-three-buttons__text-{{ ai_gen_id }} {
+    margin: 0 0 {{ block.settings.text_button_gap }}px 0;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .ai-three-buttons__button-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: {{ block.settings.button_padding_vertical }}px {{ block.settings.button_padding_horizontal }}px;
+    background-color: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: {{ block.settings.button_font_size }}px;
+    font-weight: {{ block.settings.button_font_weight }};
+    text-transform: {{ block.settings.button_text_transform }};
+    transition: all 0.3s ease;
+    border: {{ block.settings.button_border_width }}px solid {{ block.settings.button_border_color }};
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .ai-three-buttons__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_background }};
+    color: {{ block.settings.button_hover_text_color }};
+    border-color: {{ block.settings.button_hover_border_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-three-buttons__wrapper-{{ ai_gen_id }} {
+      flex-direction: column;
+    }
+
+    .ai-three-buttons__item-{{ ai_gen_id }} {
+      width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-three-buttons-{{ ai_gen_id }} {
+      width: {{ block.settings.desktop_width_percent }}%;
+      margin: 0 auto;
+    }
+  }
+{% endstyle %}
+
+<three-buttons-{{ ai_gen_id }} class="ai-three-buttons-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-three-buttons__container-{{ ai_gen_id }}">
+    <div class="ai-three-buttons__wrapper-{{ ai_gen_id }}">
+      {% if block.settings.button_1_text != blank %}
+        <div class="ai-three-buttons__item-{{ ai_gen_id }}">
+          {% if block.settings.button_1_heading != blank %}
+            <div class="ai-three-buttons__text-{{ ai_gen_id }}">
+              {{ block.settings.button_1_heading }}
+            </div>
+          {% endif %}
+          <a
+            href="{{ block.settings.button_1_link }}"
+            class="ai-three-buttons__button-{{ ai_gen_id }}"
+          >
+            {{ block.settings.button_1_text }}
+          </a>
+        </div>
+      {% endif %}
+
+      {% if block.settings.button_2_text != blank %}
+        <div class="ai-three-buttons__item-{{ ai_gen_id }}">
+          {% if block.settings.button_2_heading != blank %}
+            <div class="ai-three-buttons__text-{{ ai_gen_id }}">
+              {{ block.settings.button_2_heading }}
+            </div>
+          {% endif %}
+          <a
+            href="{{ block.settings.button_2_link }}"
+            class="ai-three-buttons__button-{{ ai_gen_id }}"
+          >
+            {{ block.settings.button_2_text }}
+          </a>
+        </div>
+      {% endif %}
+
+      {% if block.settings.button_3_text != blank %}
+        <div class="ai-three-buttons__item-{{ ai_gen_id }}">
+          {% if block.settings.button_3_heading != blank %}
+            <div class="ai-three-buttons__text-{{ ai_gen_id }}">
+              {{ block.settings.button_3_heading }}
+            </div>
+          {% endif %}
+          <a
+            href="{{ block.settings.button_3_link }}"
+            class="ai-three-buttons__button-{{ ai_gen_id }}"
+          >
+            {{ block.settings.button_3_text }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</three-buttons-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ThreeButtons{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+    }
+
+    customElements.define('three-buttons-{{ ai_gen_id }}', ThreeButtons{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Three buttons",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Button 1"
+    },
+    {
+      "type": "richtext",
+      "id": "button_1_heading",
+      "label": "Text above button",
+      "default": "<p>Option 1</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_1_text",
+      "label": "Button text",
+      "default": "Button 1"
+    },
+    {
+      "type": "url",
+      "id": "button_1_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Button 2"
+    },
+    {
+      "type": "richtext",
+      "id": "button_2_heading",
+      "label": "Text above button",
+      "default": "<p>Option 2</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_2_text",
+      "label": "Button text",
+      "default": "Button 2"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Button 3"
+    },
+    {
+      "type": "richtext",
+      "id": "button_3_heading",
+      "label": "Text above button",
+      "default": "<p>Option 3</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_3_text",
+      "label": "Button text",
+      "default": "Button 3"
+    },
+    {
+      "type": "url",
+      "id": "button_3_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Text style"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "range",
+      "id": "text_button_gap",
+      "label": "Space between text and button",
+      "min": 4,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "button_font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "select",
+      "id": "button_text_transform",
+      "label": "Text transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "lowercase",
+          "label": "Lowercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "label": "Vertical padding",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 16,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "button_spacing",
+      "label": "Space between button groups",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "button_border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Button colors"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Background",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Border",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Hover background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_border_color",
+      "label": "Hover border",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Three buttons"
+    }
+  ]
+}
+{% endschema %}

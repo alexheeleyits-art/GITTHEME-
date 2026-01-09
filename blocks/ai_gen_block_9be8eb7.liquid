@@ -1,0 +1,1114 @@
+{% doc %}
+  @prompt
+    a copy of the slideshow section exactly but with the added functionality of adding a video, must have video url upload option and upload from the shopify media section too, on slide 1 when there's a video added there a long random string that appears below the video ends in mupdka, finally add an option to have two buttons to click
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-slideshow-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-slideshow-container-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: {{ block.settings.slide_height_mobile }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-slideshow-container-{{ ai_gen_id }} {
+      height: {{ block.settings.slide_height_desktop }}px;
+    }
+  }
+
+  .ai-slideshow-slides-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ai-slideshow-slide-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+  }
+
+  .ai-slideshow-slide-{{ ai_gen_id }}.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+  }
+
+  .ai-slideshow-media-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ai-slideshow-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ai-slideshow-video-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ai-slideshow-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-slideshow-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 500px;
+  }
+
+  .ai-slideshow-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .ai-slideshow-content-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: {{ block.settings.content_vertical_alignment }};
+    justify-content: {{ block.settings.content_horizontal_alignment }};
+    z-index: 2;
+    padding: 40px 20px;
+  }
+
+  .ai-slideshow-text-wrapper-{{ ai_gen_id }} {
+    max-width: 600px;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-slideshow-subheading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subheading_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .ai-slideshow-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size_mobile }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 16px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-slideshow-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size_desktop }}px;
+    }
+  }
+
+  .ai-slideshow-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.text_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 24px;
+    line-height: 1.6;
+  }
+
+  .ai-slideshow-buttons-{{ ai_gen_id }} {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: {{ block.settings.text_alignment }};
+  }
+
+  .ai-slideshow-button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 14px 32px;
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-slideshow-button-{{ ai_gen_id }}--primary {
+    background-color: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+  }
+
+  .ai-slideshow-button-{{ ai_gen_id }}--primary:hover {
+    background-color: {{ block.settings.button_hover_background }};
+  }
+
+  .ai-slideshow-button-{{ ai_gen_id }}--secondary {
+    background-color: {{ block.settings.button_secondary_background }};
+    color: {{ block.settings.button_secondary_text_color }};
+  }
+
+  .ai-slideshow-button-{{ ai_gen_id }}--secondary:hover {
+    background-color: {{ block.settings.button_secondary_hover_background }};
+  }
+
+  .ai-slideshow-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: {{ block.settings.overlay_color }};
+    opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
+    z-index: 1;
+  }
+
+  .ai-slideshow-controls-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 3;
+  }
+
+  .ai-slideshow-dot-{{ ai_gen_id }} {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    padding: 0;
+  }
+
+  .ai-slideshow-dot-{{ ai_gen_id }}.active {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.2);
+  }
+
+  .ai-slideshow-arrow-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-slideshow-arrow-{{ ai_gen_id }}:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  .ai-slideshow-arrow-{{ ai_gen_id }}--prev {
+    left: 20px;
+  }
+
+  .ai-slideshow-arrow-{{ ai_gen_id }}--next {
+    right: 20px;
+  }
+
+  .ai-slideshow-arrow-{{ ai_gen_id }} svg {
+    width: 24px;
+    height: 24px;
+    stroke: #1c1c1c;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-slideshow-content-{{ ai_gen_id }} {
+      padding: 20px;
+    }
+
+    .ai-slideshow-arrow-{{ ai_gen_id }} {
+      width: 40px;
+      height: 40px;
+    }
+
+    .ai-slideshow-arrow-{{ ai_gen_id }}--prev {
+      left: 10px;
+    }
+
+    .ai-slideshow-arrow-{{ ai_gen_id }}--next {
+      right: 10px;
+    }
+
+    .ai-slideshow-buttons-{{ ai_gen_id }} {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .ai-slideshow-button-{{ ai_gen_id }} {
+      text-align: center;
+    }
+  }
+{% endstyle %}
+
+<slideshow-component-{{ ai_gen_id }}
+  class="ai-slideshow-{{ ai_gen_id }}"
+  data-autoplay="{{ block.settings.autoplay }}"
+  data-autoplay-speed="{{ block.settings.autoplay_speed }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-slideshow-container-{{ ai_gen_id }}">
+    <div class="ai-slideshow-slides-{{ ai_gen_id }}">
+      {% if block.settings.slide_1_enabled %}
+        <div class="ai-slideshow-slide-{{ ai_gen_id }} active" data-slide="1">
+          <div class="ai-slideshow-media-{{ ai_gen_id }}">
+            {% if block.settings.slide_1_video_shopify != blank %}
+              {% assign video_class = 'ai-slideshow-video-' | append: ai_gen_id %}
+              {{ block.settings.slide_1_video_shopify | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: video_class }}
+            {% elsif block.settings.slide_1_video_url != blank %}
+              <video
+                class="ai-slideshow-video-{{ ai_gen_id }}"
+                autoplay
+                muted
+                loop
+                playsinline
+              >
+                <source src="{{ block.settings.slide_1_video_url }}" type="video/mp4">
+              </video>
+            {% elsif block.settings.slide_1_image %}
+              <img
+                src="{{ block.settings.slide_1_image | image_url: width: 2000 }}"
+                alt="{{ block.settings.slide_1_image.alt | escape }}"
+                loading="lazy"
+                width="{{ block.settings.slide_1_image.width }}"
+                height="{{ block.settings.slide_1_image.height }}"
+                class="ai-slideshow-image-{{ ai_gen_id }}"
+              >
+            {% else %}
+              <div class="ai-slideshow-placeholder-{{ ai_gen_id }}">
+                {{ 'hero-apparel-1' | placeholder_svg_tag }}
+                <div class="ai-slideshow-empty-state-{{ ai_gen_id }}">
+                  Add an image or video for slide 1
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          {% if block.settings.slide_1_show_overlay %}
+            <div class="ai-slideshow-overlay-{{ ai_gen_id }}"></div>
+          {% endif %}
+          {% if block.settings.slide_1_subheading != blank or block.settings.slide_1_heading != blank or block.settings.slide_1_text != blank or block.settings.slide_1_button_text != blank or block.settings.slide_1_button_2_text != blank %}
+            <div class="ai-slideshow-content-{{ ai_gen_id }}">
+              <div class="ai-slideshow-text-wrapper-{{ ai_gen_id }}">
+                {% if block.settings.slide_1_subheading != blank %}
+                  <div class="ai-slideshow-subheading-{{ ai_gen_id }}">{{ block.settings.slide_1_subheading }}</div>
+                {% endif %}
+                {% if block.settings.slide_1_heading != blank %}
+                  <h2 class="ai-slideshow-heading-{{ ai_gen_id }}">{{ block.settings.slide_1_heading }}</h2>
+                {% endif %}
+                {% if block.settings.slide_1_text != blank %}
+                  <div class="ai-slideshow-text-{{ ai_gen_id }}">{{ block.settings.slide_1_text }}</div>
+                {% endif %}
+                {% if block.settings.slide_1_button_text != blank or block.settings.slide_1_button_2_text != blank %}
+                  <div class="ai-slideshow-buttons-{{ ai_gen_id }}">
+                    {% if block.settings.slide_1_button_text != blank %}
+                      <a href="{{ block.settings.slide_1_button_link }}" class="ai-slideshow-button-{{ ai_gen_id }} ai-slideshow-button-{{ ai_gen_id }}--primary">
+                        {{ block.settings.slide_1_button_text }}
+                      </a>
+                    {% endif %}
+                    {% if block.settings.slide_1_button_2_text != blank %}
+                      <a href="{{ block.settings.slide_1_button_2_link }}" class="ai-slideshow-button-{{ ai_gen_id }} ai-slideshow-button-{{ ai_gen_id }}--secondary">
+                        {{ block.settings.slide_1_button_2_text }}
+                      </a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.slide_2_enabled %}
+        <div class="ai-slideshow-slide-{{ ai_gen_id }}" data-slide="2">
+          <div class="ai-slideshow-media-{{ ai_gen_id }}">
+            {% if block.settings.slide_2_video_shopify != blank %}
+              {% assign video_class = 'ai-slideshow-video-' | append: ai_gen_id %}
+              {{ block.settings.slide_2_video_shopify | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: video_class }}
+            {% elsif block.settings.slide_2_video_url != blank %}
+              <video
+                class="ai-slideshow-video-{{ ai_gen_id }}"
+                autoplay
+                muted
+                loop
+                playsinline
+              >
+                <source src="{{ block.settings.slide_2_video_url }}" type="video/mp4">
+              </video>
+            {% elsif block.settings.slide_2_image %}
+              <img
+                src="{{ block.settings.slide_2_image | image_url: width: 2000 }}"
+                alt="{{ block.settings.slide_2_image.alt | escape }}"
+                loading="lazy"
+                width="{{ block.settings.slide_2_image.width }}"
+                height="{{ block.settings.slide_2_image.height }}"
+                class="ai-slideshow-image-{{ ai_gen_id }}"
+              >
+            {% else %}
+              <div class="ai-slideshow-placeholder-{{ ai_gen_id }}">
+                {{ 'hero-apparel-1' | placeholder_svg_tag }}
+                <div class="ai-slideshow-empty-state-{{ ai_gen_id }}">
+                  Add an image or video for slide 2
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          {% if block.settings.slide_2_show_overlay %}
+            <div class="ai-slideshow-overlay-{{ ai_gen_id }}"></div>
+          {% endif %}
+          {% if block.settings.slide_2_subheading != blank or block.settings.slide_2_heading != blank or block.settings.slide_2_text != blank or block.settings.slide_2_button_text != blank or block.settings.slide_2_button_2_text != blank %}
+            <div class="ai-slideshow-content-{{ ai_gen_id }}">
+              <div class="ai-slideshow-text-wrapper-{{ ai_gen_id }}">
+                {% if block.settings.slide_2_subheading != blank %}
+                  <div class="ai-slideshow-subheading-{{ ai_gen_id }}">{{ block.settings.slide_2_subheading }}</div>
+                {% endif %}
+                {% if block.settings.slide_2_heading != blank %}
+                  <h2 class="ai-slideshow-heading-{{ ai_gen_id }}">{{ block.settings.slide_2_heading }}</h2>
+                {% endif %}
+                {% if block.settings.slide_2_text != blank %}
+                  <div class="ai-slideshow-text-{{ ai_gen_id }}">{{ block.settings.slide_2_text }}</div>
+                {% endif %}
+                {% if block.settings.slide_2_button_text != blank or block.settings.slide_2_button_2_text != blank %}
+                  <div class="ai-slideshow-buttons-{{ ai_gen_id }}">
+                    {% if block.settings.slide_2_button_text != blank %}
+                      <a href="{{ block.settings.slide_2_button_link }}" class="ai-slideshow-button-{{ ai_gen_id }} ai-slideshow-button-{{ ai_gen_id }}--primary">
+                        {{ block.settings.slide_2_button_text }}
+                      </a>
+                    {% endif %}
+                    {% if block.settings.slide_2_button_2_text != blank %}
+                      <a href="{{ block.settings.slide_2_button_2_link }}" class="ai-slideshow-button-{{ ai_gen_id }} ai-slideshow-button-{{ ai_gen_id }}--secondary">
+                        {{ block.settings.slide_2_button_2_text }}
+                      </a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.slide_3_enabled %}
+        <div class="ai-slideshow-slide-{{ ai_gen_id }}" data-slide="3">
+          <div class="ai-slideshow-media-{{ ai_gen_id }}">
+            {% if block.settings.slide_3_video_shopify != blank %}
+              {% assign video_class = 'ai-slideshow-video-' | append: ai_gen_id %}
+              {{ block.settings.slide_3_video_shopify | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: video_class }}
+            {% elsif block.settings.slide_3_video_url != blank %}
+              <video
+                class="ai-slideshow-video-{{ ai_gen_id }}"
+                autoplay
+                muted
+                loop
+                playsinline
+              >
+                <source src="{{ block.settings.slide_3_video_url }}" type="video/mp4">
+              </video>
+            {% elsif block.settings.slide_3_image %}
+              <img
+                src="{{ block.settings.slide_3_image | image_url: width: 2000 }}"
+                alt="{{ block.settings.slide_3_image.alt | escape }}"
+                loading="lazy"
+                width="{{ block.settings.slide_3_image.width }}"
+                height="{{ block.settings.slide_3_image.height }}"
+                class="ai-slideshow-image-{{ ai_gen_id }}"
+              >
+            {% else %}
+              <div class="ai-slideshow-placeholder-{{ ai_gen_id }}">
+                {{ 'hero-apparel-1' | placeholder_svg_tag }}
+                <div class="ai-slideshow-empty-state-{{ ai_gen_id }}">
+                  Add an image or video for slide 3
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          {% if block.settings.slide_3_show_overlay %}
+            <div class="ai-slideshow-overlay-{{ ai_gen_id }}"></div>
+          {% endif %}
+          {% if block.settings.slide_3_subheading != blank or block.settings.slide_3_heading != blank or block.settings.slide_3_text != blank or block.settings.slide_3_button_text != blank or block.settings.slide_3_button_2_text != blank %}
+            <div class="ai-slideshow-content-{{ ai_gen_id }}">
+              <div class="ai-slideshow-text-wrapper-{{ ai_gen_id }}">
+                {% if block.settings.slide_3_subheading != blank %}
+                  <div class="ai-slideshow-subheading-{{ ai_gen_id }}">{{ block.settings.slide_3_subheading }}</div>
+                {% endif %}
+                {% if block.settings.slide_3_heading != blank %}
+                  <h2 class="ai-slideshow-heading-{{ ai_gen_id }}">{{ block.settings.slide_3_heading }}</h2>
+                {% endif %}
+                {% if block.settings.slide_3_text != blank %}
+                  <div class="ai-slideshow-text-{{ ai_gen_id }}">{{ block.settings.slide_3_text }}</div>
+                {% endif %}
+                {% if block.settings.slide_3_button_text != blank or block.settings.slide_3_button_2_text != blank %}
+                  <div class="ai-slideshow-buttons-{{ ai_gen_id }}">
+                    {% if block.settings.slide_3_button_text != blank %}
+                      <a href="{{ block.settings.slide_3_button_link }}" class="ai-slideshow-button-{{ ai_gen_id }} ai-slideshow-button-{{ ai_gen_id }}--primary">
+                        {{ block.settings.slide_3_button_text }}
+                      </a>
+                    {% endif %}
+                    {% if block.settings.slide_3_button_2_text != blank %}
+                      <a href="{{ block.settings.slide_3_button_2_link }}" class="ai-slideshow-button-{{ ai_gen_id }} ai-slideshow-button-{{ ai_gen_id }}--secondary">
+                        {{ block.settings.slide_3_button_2_text }}
+                      </a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if block.settings.show_arrows %}
+      <button class="ai-slideshow-arrow-{{ ai_gen_id }} ai-slideshow-arrow-{{ ai_gen_id }}--prev" aria-label="Previous slide">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button class="ai-slideshow-arrow-{{ ai_gen_id }} ai-slideshow-arrow-{{ ai_gen_id }}--next" aria-label="Next slide">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    {% endif %}
+
+    {% if block.settings.show_dots %}
+      <div class="ai-slideshow-controls-{{ ai_gen_id }}">
+        {% if block.settings.slide_1_enabled %}
+          <button class="ai-slideshow-dot-{{ ai_gen_id }} active" data-slide="1" aria-label="Go to slide 1"></button>
+        {% endif %}
+        {% if block.settings.slide_2_enabled %}
+          <button class="ai-slideshow-dot-{{ ai_gen_id }}" data-slide="2" aria-label="Go to slide 2"></button>
+        {% endif %}
+        {% if block.settings.slide_3_enabled %}
+          <button class="ai-slideshow-dot-{{ ai_gen_id }}" data-slide="3" aria-label="Go to slide 3"></button>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</slideshow-component-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class SlideshowComponent{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentSlide = 1;
+        this.autoplayInterval = null;
+      }
+
+      connectedCallback() {
+        this.slides = this.querySelectorAll('.ai-slideshow-slide-{{ ai_gen_id }}');
+        this.dots = this.querySelectorAll('.ai-slideshow-dot-{{ ai_gen_id }}');
+        this.prevButton = this.querySelector('.ai-slideshow-arrow-{{ ai_gen_id }}--prev');
+        this.nextButton = this.querySelector('.ai-slideshow-arrow-{{ ai_gen_id }}--next');
+        this.autoplay = this.dataset.autoplay === 'true';
+        this.autoplaySpeed = parseInt(this.dataset.autoplaySpeed) * 1000;
+
+        this.setupEventListeners();
+
+        if (this.autoplay && this.slides.length > 1) {
+          this.startAutoplay();
+        }
+      }
+
+      setupEventListeners() {
+        if (this.prevButton) {
+          this.prevButton.addEventListener('click', () => this.previousSlide());
+        }
+
+        if (this.nextButton) {
+          this.nextButton.addEventListener('click', () => this.nextSlide());
+        }
+
+        this.dots.forEach((dot) => {
+          dot.addEventListener('click', (e) => {
+            const slideNumber = parseInt(e.target.dataset.slide);
+            this.goToSlide(slideNumber);
+          });
+        });
+
+        this.addEventListener('mouseenter', () => this.stopAutoplay());
+        this.addEventListener('mouseleave', () => {
+          if (this.autoplay && this.slides.length > 1) {
+            this.startAutoplay();
+          }
+        });
+      }
+
+      goToSlide(slideNumber) {
+        this.slides.forEach((slide) => {
+          slide.classList.remove('active');
+        });
+
+        this.dots.forEach((dot) => {
+          dot.classList.remove('active');
+        });
+
+        const targetSlide = this.querySelector(`[data-slide="${slideNumber}"]`);
+        if (targetSlide && targetSlide.classList.contains('ai-slideshow-slide-{{ ai_gen_id }}')) {
+          targetSlide.classList.add('active');
+          this.currentSlide = slideNumber;
+        }
+
+        const targetDot = this.querySelector(`.ai-slideshow-dot-{{ ai_gen_id }}[data-slide="${slideNumber}"]`);
+        if (targetDot) {
+          targetDot.classList.add('active');
+        }
+      }
+
+      nextSlide() {
+        const enabledSlides = Array.from(this.slides).filter(slide => {
+          const slideNum = parseInt(slide.dataset.slide);
+          return this.querySelector(`.ai-slideshow-dot-{{ ai_gen_id }}[data-slide="${slideNum}"]`) !== null;
+        });
+
+        const currentIndex = enabledSlides.findIndex(slide => slide.classList.contains('active'));
+        const nextIndex = (currentIndex + 1) % enabledSlides.length;
+        const nextSlideNumber = parseInt(enabledSlides[nextIndex].dataset.slide);
+
+        this.goToSlide(nextSlideNumber);
+      }
+
+      previousSlide() {
+        const enabledSlides = Array.from(this.slides).filter(slide => {
+          const slideNum = parseInt(slide.dataset.slide);
+          return this.querySelector(`.ai-slideshow-dot-{{ ai_gen_id }}[data-slide="${slideNum}"]`) !== null;
+        });
+
+        const currentIndex = enabledSlides.findIndex(slide => slide.classList.contains('active'));
+        const prevIndex = (currentIndex - 1 + enabledSlides.length) % enabledSlides.length;
+        const prevSlideNumber = parseInt(enabledSlides[prevIndex].dataset.slide);
+
+        this.goToSlide(prevSlideNumber);
+      }
+
+      startAutoplay() {
+        this.stopAutoplay();
+        this.autoplayInterval = setInterval(() => {
+          this.nextSlide();
+        }, this.autoplaySpeed);
+      }
+
+      stopAutoplay() {
+        if (this.autoplayInterval) {
+          clearInterval(this.autoplayInterval);
+          this.autoplayInterval = null;
+        }
+      }
+
+      disconnectedCallback() {
+        this.stopAutoplay();
+      }
+    }
+
+    customElements.define('slideshow-component-{{ ai_gen_id }}', SlideshowComponent{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Slideshow with video",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "slide_height_mobile",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Slide height on mobile",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "slide_height_desktop",
+      "min": 400,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Slide height on desktop",
+      "default": 700
+    },
+    {
+      "type": "header",
+      "content": "Content position"
+    },
+    {
+      "type": "select",
+      "id": "content_vertical_alignment",
+      "label": "Vertical alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "content_horizontal_alignment",
+      "label": "Horizontal alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheading size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size on mobile",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 30,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size on desktop",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Primary button"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Hover background",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "header",
+      "content": "Secondary button"
+    },
+    {
+      "type": "color",
+      "id": "button_secondary_background",
+      "label": "Background",
+      "default": "rgba(255, 255, 255, 0)"
+    },
+    {
+      "type": "color",
+      "id": "button_secondary_text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_secondary_hover_background",
+      "label": "Hover background",
+      "default": "rgba(255, 255, 255, 0.1)"
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Slideshow controls"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show navigation arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show navigation dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-rotate slides",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Change slides every",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Slide 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_1_enabled",
+      "label": "Enable slide 1",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "slide_1_video_shopify",
+      "label": "Video from Shopify"
+    },
+    {
+      "type": "url",
+      "id": "slide_1_video_url",
+      "label": "Video URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_1_show_overlay",
+      "label": "Show overlay",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "slide_1_subheading",
+      "label": "Subheading",
+      "default": "New Collection"
+    },
+    {
+      "type": "text",
+      "id": "slide_1_heading",
+      "label": "Heading",
+      "default": "Discover Our Latest Fragrances"
+    },
+    {
+      "type": "textarea",
+      "id": "slide_1_text",
+      "label": "Text",
+      "default": "Explore our curated selection of premium scents"
+    },
+    {
+      "type": "text",
+      "id": "slide_1_button_text",
+      "label": "Button 1 text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "slide_1_button_link",
+      "label": "Button 1 link"
+    },
+    {
+      "type": "text",
+      "id": "slide_1_button_2_text",
+      "label": "Button 2 text"
+    },
+    {
+      "type": "url",
+      "id": "slide_1_button_2_link",
+      "label": "Button 2 link"
+    },
+    {
+      "type": "header",
+      "content": "Slide 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_2_enabled",
+      "label": "Enable slide 2",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "slide_2_video_shopify",
+      "label": "Video from Shopify"
+    },
+    {
+      "type": "url",
+      "id": "slide_2_video_url",
+      "label": "Video URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_2_show_overlay",
+      "label": "Show overlay",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "slide_2_subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "slide_2_heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "slide_2_text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "slide_2_button_text",
+      "label": "Button 1 text"
+    },
+    {
+      "type": "url",
+      "id": "slide_2_button_link",
+      "label": "Button 1 link"
+    },
+    {
+      "type": "text",
+      "id": "slide_2_button_2_text",
+      "label": "Button 2 text"
+    },
+    {
+      "type": "url",
+      "id": "slide_2_button_2_link",
+      "label": "Button 2 link"
+    },
+    {
+      "type": "header",
+      "content": "Slide 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_3_enabled",
+      "label": "Enable slide 3",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "slide_3_video_shopify",
+      "label": "Video from Shopify"
+    },
+    {
+      "type": "url",
+      "id": "slide_3_video_url",
+      "label": "Video URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_3_show_overlay",
+      "label": "Show overlay",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "slide_3_subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "slide_3_heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "slide_3_text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "slide_3_button_text",
+      "label": "Button 1 text"
+    },
+    {
+      "type": "url",
+      "id": "slide_3_button_link",
+      "label": "Button 1 link"
+    },
+    {
+      "type": "text",
+      "id": "slide_3_button_2_text",
+      "label": "Button 2 text"
+    },
+    {
+      "type": "url",
+      "id": "slide_3_button_2_link",
+      "label": "Button 2 link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slideshow with video"
+    }
+  ]
+}
+{% endschema %}

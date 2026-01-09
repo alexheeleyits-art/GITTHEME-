@@ -1,0 +1,181 @@
+{%- liquid
+  if hide_product_information
+    assign show_badges = false
+    assign show_rating = false
+    assign show_vendor = false
+    assign show_title = false
+    assign show_prices = false
+    assign show_swatches = false
+    assign show_quick_buy = show_quick_buy | default: settings.show_quick_buy, allow_false: true
+    assign show_secondary_image = false
+  else
+    assign show_badges = show_badges | default: true, allow_false: true
+    assign show_rating = show_rating | default: settings.show_product_rating, allow_false: true
+    assign show_vendor = show_vendor | default: settings.show_vendor, allow_false: true
+    assign show_quick_buy = show_quick_buy | default: settings.show_quick_buy, allow_false: true
+    assign show_title = true
+    assign show_prices = true
+    assign show_secondary_image = false
+    assign show_swatches = show_swatches | default: true, allow_false: true
+  endif
+-%}
+
+<product-card class="product-card dossier-card" {% if reveal %}reveal-on-scroll="true"{% endif %} handle="{{ product.handle | escape }}">
+
+  {%- comment -%}
+  --------------------------------------------------------------------------------------------------------------------
+  PRODUCT MEDIA — Dossier style
+  --------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+  {% if product.media.size > 0 %}
+    <div class="product-card__figure dossier-media">
+
+      <a href="{{ product.url }}" class="product-card__media dossier-image-wrapper" draggable="false" data-instant>
+
+        {% capture sizes %}
+          (max-width: 699px) 74vw, (max-width: 999px) 38vw, 380px
+        {% endcapture %}
+
+        {% liquid
+          assign main_media_loading_strategy = nil
+          if section.index > 3 or position > 3
+            assign main_media_loading_strategy = 'lazy'
+          endif
+        %}
+
+        {{ product.featured_media
+          | image_url: width: 900
+          | image_tag:
+              loading: main_media_loading_strategy,
+              class: "dossier-img-main",
+              sizes: sizes,
+              widths: "300,400,500,600,700,800,900,1200"
+        }}
+
+        {% comment %}
+        =====================================================================================
+        CUSTOM METAFIELD BADGES
+        badge_1  (top left)
+        badge_2  (under badge_1)
+        badge_right (top right)
+        =====================================================================================
+        {% endcomment %}
+        {% assign badge_1 = product.metafields.custom.badge_1.value %}
+        {% assign badge_2 = product.metafields.custom.badge_2.value %}
+        {% assign badge_right = product.metafields.custom.badge_right.value %}
+
+        {% if badge_1 or badge_2 or badge_right %}
+          <div class="product-badges">
+            {% if badge_1 %}
+              <span class="badge badge--left">{{ badge_1 }}</span>
+            {% endif %}
+            {% if badge_2 %}
+              <span class="badge badge--left badge--below">{{ badge_2 }}</span>
+            {% endif %}
+            {% if badge_right %}
+              <span class="badge badge--right">{{ badge_right }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+
+      </a>
+
+      {% if show_rating %}
+        <div class="dossier-rating">
+          {%- render 'product-rating',
+              product: product,
+              show_empty: settings.show_product_rating_if_empty,
+              display_mode: settings.product_rating_mode
+          -%}
+        </div>
+      {% else %}
+        <div class="dossier-rating"></div>
+      {% endif %}
+
+    </div>
+  {% endif %}
+
+  {%- comment -%}
+  --------------------------------------------------------------------------------------------------------------------
+  PRODUCT INFO — Title left, price right, inspired by
+  --------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+  <div class="product-card__info dossier-info">
+
+    {% assign inspired_by = product.metafields.custom.inspired_by %}
+
+    <!-- TITLE LEFT + PRICE RIGHT -->
+    <div class="dossier-title-price-row">
+      <span class="dossier-title-left">{{ product.title }}</span>
+
+      {% if show_prices %}
+        <span class="dossier-price-right">
+
+          {% if product.price_varies %}
+            <span class="dossier-price-from">From</span>
+            <span class="dossier-price-amount">
+              {{ product.price_min | money }}
+            </span>
+          {% else %}
+            <span class="dossier-price-amount">
+              {{ product.price | money }}
+            </span>
+          {% endif %}
+
+        </span>
+      {% endif %}
+    </div>
+
+    <!-- INSPIRED BY -->
+    {% if inspired_by %}
+      <div class="dossier-inspired-left">
+        Inspired by {{ inspired_by }}
+      </div>
+    {% endif %}
+
+    {%- if show_swatches and settings.product_color_display != 'hide' -%}
+
+      {%- liquid
+        assign matched_product_option = nil
+        assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ','
+
+        for color_label in color_label_list
+          if product.options_by_name[color_label] != blank
+            assign matched_product_option = product.options_by_name[color_label]
+            break
+          endif
+        endfor
+      -%}
+
+      {% if matched_product_option != blank %}
+        {% case settings.product_color_display %}
+
+          {% when 'count' %}
+            <p class="smallcaps text-subdued">
+              {{ 'product.general.available_colors_count' | t: count: matched_product_option.values.size }}
+            </p>
+
+          {% when 'swatch' %}
+            <fieldset class="h-stack wrap justify-center gap-1">
+              <legend class="sr-only">{{ matched_product_option.name }}</legend>
+
+              {% for option_value in matched_product_option.values %}
+                {%- render 'option-value',
+                    type: 'swatch',
+                    option_value: option_value,
+                    option_position: matched_product_option.position,
+                    size: 'sm'
+                -%}
+              {% endfor %}
+            </fieldset>
+
+        {% endcase %}
+      {% endif %}
+
+    {%- endif -%}
+
+  </div>
+
+</product-card>

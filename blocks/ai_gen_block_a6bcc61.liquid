@@ -1,0 +1,1290 @@
+{% doc %}
+  @prompt
+    I'd like a section that is desktop 2 section wide where i can have, Image then underneath a rich text section with sub heading heading and then text, then below that a button. I would also like the option to have 8 of these, but i'd also like an additional option in stead of image stacked ontop of rich text, i'd like an option to add an image and have the rich text etc sit inside the image. Font selectability size and spacing need to be an option too, rich text needs content allignment options, give me image sizing options and font spacing /gaps for the rich text sectioj, need image sizing as a slider
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-content-grid-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+  }
+
+  .ai-content-grid__container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+    width: 100%;
+  }
+
+  .ai-content-grid__item-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ai-content-grid__item--overlay-{{ ai_gen_id }} {
+    position: relative;
+    min-height: {{ block.settings.overlay_min_height }}px;
+  }
+
+  .ai-content-grid__image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-content-grid__image-wrapper--overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ai-content-grid__image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ai-content-grid__image--overlay-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: {{ block.settings.overlay_image_fit }};
+  }
+
+  .ai-content-grid__image--stacked-{{ ai_gen_id }} {
+    height: {{ block.settings.stacked_image_height }}px;
+    object-fit: {{ block.settings.stacked_image_fit }};
+  }
+
+  .ai-content-grid__image-placeholder-{{ ai_gen_id }} {
+    background-color: #f4f4f4;
+    width: 100%;
+    height: {{ block.settings.stacked_image_height }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-content-grid__image-placeholder--overlay-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+  }
+
+  .ai-content-grid__image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .ai-content-grid__content-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.content_spacing }}px;
+    margin-top: {{ block.settings.content_top_spacing }}px;
+  }
+
+  .ai-content-grid__content--stacked-left-{{ ai_gen_id }} {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .ai-content-grid__content--stacked-center-{{ ai_gen_id }} {
+    align-items: center;
+    text-align: center;
+  }
+
+  .ai-content-grid__content--stacked-right-{{ ai_gen_id }} {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .ai-content-grid__content--overlay-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 2;
+    padding: {{ block.settings.overlay_padding }}px;
+    margin-top: 0;
+    height: 100%;
+    justify-content: {{ block.settings.overlay_vertical_alignment }};
+    align-items: {{ block.settings.overlay_horizontal_alignment }};
+    text-align: {% if block.settings.overlay_horizontal_alignment == 'flex-start' %}left{% elsif block.settings.overlay_horizontal_alignment == 'flex-end' %}right{% else %}center{% endif %};
+  }
+
+  .ai-content-grid__subheading-{{ ai_gen_id }} {
+    font-family: {{ block.settings.subheading_font.family }}, {{ block.settings.subheading_font.fallback_families }};
+    font-weight: {{ block.settings.subheading_font.weight }};
+    font-size: {{ block.settings.subheading_size }}px;
+    line-height: {{ block.settings.subheading_line_height }};
+    margin: 0;
+    letter-spacing: {{ block.settings.subheading_letter_spacing }}px;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-content-grid__subheading--overlay-{{ ai_gen_id }} {
+    color: {{ block.settings.overlay_text_color }};
+  }
+
+  .ai-content-grid__heading-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: {{ block.settings.heading_line_height }};
+    margin: 0;
+    letter-spacing: {{ block.settings.heading_letter_spacing }}px;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-content-grid__heading--overlay-{{ ai_gen_id }} {
+    color: {{ block.settings.overlay_text_color }};
+  }
+
+  .ai-content-grid__text-{{ ai_gen_id }} {
+    font-family: {{ block.settings.text_font.family }}, {{ block.settings.text_font.fallback_families }};
+    font-weight: {{ block.settings.text_font.weight }};
+    font-size: {{ block.settings.text_size }}px;
+    line-height: {{ block.settings.text_line_height }};
+    margin: 0;
+    letter-spacing: {{ block.settings.text_letter_spacing }}px;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-content-grid__text--overlay-{{ ai_gen_id }} {
+    color: {{ block.settings.overlay_text_color }};
+  }
+
+  .ai-content-grid__button-wrapper-{{ ai_gen_id }} {
+    margin-top: {{ block.settings.button_spacing }}px;
+  }
+
+  .ai-content-grid__button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: {{ block.settings.button_padding_vertical }}px {{ block.settings.button_padding_horizontal }}px;
+    background-color: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-family: {{ block.settings.button_font.family }}, {{ block.settings.button_font.fallback_families }};
+    font-weight: {{ block.settings.button_font.weight }};
+    font-size: {{ block.settings.button_size }}px;
+    letter-spacing: {{ block.settings.button_letter_spacing }}px;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-content-grid__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_background }};
+    color: {{ block.settings.button_hover_text_color }};
+  }
+
+  .ai-content-grid__button--overlay-{{ ai_gen_id }} {
+    background-color: {{ block.settings.overlay_button_background }};
+    color: {{ block.settings.overlay_button_text_color }};
+  }
+
+  .ai-content-grid__button--overlay-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.overlay_button_hover_background }};
+    color: {{ block.settings.overlay_button_hover_text_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-content-grid__container-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr);
+    }
+
+    .ai-content-grid__subheading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.subheading_size }}px * 0.85);
+    }
+
+    .ai-content-grid__heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.85);
+    }
+
+    .ai-content-grid__text-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.text_size }}px * 0.9);
+    }
+
+    .ai-content-grid__button-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.button_size }}px * 0.9);
+    }
+  }
+{% endstyle %}
+
+<content-grid-{{ ai_gen_id }} class="ai-content-grid-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-content-grid__container-{{ ai_gen_id }}">
+    {% for i in (1..8) %}
+      {% liquid
+        assign item_enabled_key = 'item_' | append: i | append: '_enabled'
+        assign layout_key = 'item_' | append: i | append: '_layout'
+        assign alignment_key = 'item_' | append: i | append: '_alignment'
+        assign image_key = 'item_' | append: i | append: '_image'
+        assign subheading_key = 'item_' | append: i | append: '_subheading'
+        assign heading_key = 'item_' | append: i | append: '_heading'
+        assign text_key = 'item_' | append: i | append: '_text'
+        assign button_text_key = 'item_' | append: i | append: '_button_text'
+        assign button_link_key = 'item_' | append: i | append: '_button_link'
+
+        assign item_enabled = block.settings[item_enabled_key]
+        assign layout = block.settings[layout_key]
+        assign alignment = block.settings[alignment_key]
+        assign image = block.settings[image_key]
+        assign subheading = block.settings[subheading_key]
+        assign heading = block.settings[heading_key]
+        assign text = block.settings[text_key]
+        assign button_text = block.settings[button_text_key]
+        assign button_link = block.settings[button_link_key]
+      %}
+
+      {% if item_enabled %}
+        {% if layout == 'stacked' %}
+          <div class="ai-content-grid__item-{{ ai_gen_id }}">
+            <div class="ai-content-grid__image-wrapper-{{ ai_gen_id }}">
+              {% if image %}
+                <img
+                  src="{{ image | image_url: width: 800 }}"
+                  alt="{{ image.alt | escape }}"
+                  loading="lazy"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
+                  class="ai-content-grid__image-{{ ai_gen_id }} ai-content-grid__image--stacked-{{ ai_gen_id }}"
+                >
+              {% else %}
+                <div class="ai-content-grid__image-placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="ai-content-grid__content-{{ ai_gen_id }} ai-content-grid__content--stacked-{{ alignment }}-{{ ai_gen_id }}">
+              {% if subheading != blank %}
+                <div class="ai-content-grid__subheading-{{ ai_gen_id }}">
+                  {{ subheading }}
+                </div>
+              {% endif %}
+
+              {% if heading != blank %}
+                <h3 class="ai-content-grid__heading-{{ ai_gen_id }}">
+                  {{ heading }}
+                </h3>
+              {% endif %}
+
+              {% if text != blank %}
+                <div class="ai-content-grid__text-{{ ai_gen_id }}">
+                  {{ text }}
+                </div>
+              {% endif %}
+
+              {% if button_text != blank %}
+                <div class="ai-content-grid__button-wrapper-{{ ai_gen_id }}">
+                  <a href="{{ button_link }}" class="ai-content-grid__button-{{ ai_gen_id }}">
+                    {{ button_text }}
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% else %}
+          <div class="ai-content-grid__item-{{ ai_gen_id }} ai-content-grid__item--overlay-{{ ai_gen_id }}">
+            <div class="ai-content-grid__image-wrapper-{{ ai_gen_id }} ai-content-grid__image-wrapper--overlay-{{ ai_gen_id }}">
+              {% if image %}
+                <img
+                  src="{{ image | image_url: width: 1200 }}"
+                  alt="{{ image.alt | escape }}"
+                  loading="lazy"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
+                  class="ai-content-grid__image-{{ ai_gen_id }} ai-content-grid__image--overlay-{{ ai_gen_id }}"
+                >
+              {% else %}
+                <div class="ai-content-grid__image-placeholder-{{ ai_gen_id }} ai-content-grid__image-placeholder--overlay-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="ai-content-grid__content-{{ ai_gen_id }} ai-content-grid__content--overlay-{{ ai_gen_id }}">
+              <div>
+                {% if subheading != blank %}
+                  <div class="ai-content-grid__subheading-{{ ai_gen_id }} ai-content-grid__subheading--overlay-{{ ai_gen_id }}">
+                    {{ subheading }}
+                  </div>
+                {% endif %}
+
+                {% if heading != blank %}
+                  <h3 class="ai-content-grid__heading-{{ ai_gen_id }} ai-content-grid__heading--overlay-{{ ai_gen_id }}">
+                    {{ heading }}
+                  </h3>
+                {% endif %}
+
+                {% if text != blank %}
+                  <div class="ai-content-grid__text-{{ ai_gen_id }} ai-content-grid__text--overlay-{{ ai_gen_id }}">
+                    {{ text }}
+                  </div>
+                {% endif %}
+
+                {% if button_text != blank %}
+                  <div class="ai-content-grid__button-wrapper-{{ ai_gen_id }}">
+                    <a href="{{ button_link }}" class="ai-content-grid__button-{{ ai_gen_id }} ai-content-grid__button--overlay-{{ ai_gen_id }}">
+                      {{ button_text }}
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</content-grid-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ContentGrid{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+    }
+    customElements.define('content-grid-{{ ai_gen_id }}', ContentGrid{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Content grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Gap between items",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "header",
+      "content": "Stacked layout image"
+    },
+    {
+      "type": "range",
+      "id": "stacked_image_height",
+      "label": "Image height",
+      "min": 100,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "select",
+      "id": "stacked_image_fit",
+      "label": "Image fit",
+      "options": [
+        { "value": "cover", "label": "Cover" },
+        { "value": "contain", "label": "Contain" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "header",
+      "content": "Overlay layout image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_min_height",
+      "label": "Minimum height",
+      "min": 200,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "select",
+      "id": "overlay_image_fit",
+      "label": "Image fit",
+      "options": [
+        { "value": "cover", "label": "Cover" },
+        { "value": "contain", "label": "Contain" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "header",
+      "content": "Stacked layout colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "header",
+      "content": "Overlay layout colors"
+    },
+    {
+      "type": "color",
+      "id": "overlay_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Overlay layout settings"
+    },
+    {
+      "type": "range",
+      "id": "overlay_padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "overlay_vertical_alignment",
+      "label": "Vertical alignment",
+      "options": [
+        { "value": "flex-start", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Bottom" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "overlay_horizontal_alignment",
+      "label": "Horizontal alignment",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Subheading"
+    },
+    {
+      "type": "font_picker",
+      "id": "subheading_font",
+      "label": "Font",
+      "default": "montserrat_n4"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "label": "Size",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "subheading_line_height",
+      "label": "Line height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.4
+    },
+    {
+      "type": "range",
+      "id": "subheading_letter_spacing",
+      "label": "Letter spacing",
+      "min": -2,
+      "max": 4,
+      "step": 0.5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Font",
+      "default": "montserrat_n7"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Size",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_line_height",
+      "label": "Line height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.2
+    },
+    {
+      "type": "range",
+      "id": "heading_letter_spacing",
+      "label": "Letter spacing",
+      "min": -2,
+      "max": 4,
+      "step": 0.5,
+      "unit": "px",
+      "default": -1
+    },
+    {
+      "type": "header",
+      "content": "Body text"
+    },
+    {
+      "type": "font_picker",
+      "id": "text_font",
+      "label": "Font",
+      "default": "montserrat_n4"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_line_height",
+      "label": "Line height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.6
+    },
+    {
+      "type": "range",
+      "id": "text_letter_spacing",
+      "label": "Letter spacing",
+      "min": -2,
+      "max": 4,
+      "step": 0.5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "content_spacing",
+      "label": "Spacing between elements",
+      "min": 4,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "content_top_spacing",
+      "label": "Spacing above content",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Button - stacked layout"
+    },
+    {
+      "type": "font_picker",
+      "id": "button_font",
+      "label": "Font",
+      "default": "montserrat_n4"
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "label": "Size",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_letter_spacing",
+      "label": "Letter spacing",
+      "min": -2,
+      "max": 4,
+      "step": 0.5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "button_spacing",
+      "label": "Spacing above button",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "label": "Vertical padding",
+      "min": 4,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 8,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Background",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Hover background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Button - overlay layout"
+    },
+    {
+      "type": "color",
+      "id": "overlay_button_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "overlay_button_text_color",
+      "label": "Text color",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "color",
+      "id": "overlay_button_hover_background",
+      "label": "Hover background",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "color",
+      "id": "overlay_button_hover_text_color",
+      "label": "Hover text color",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "header",
+      "content": "Item 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "item_1_enabled",
+      "label": "Enable item 1",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "item_1_layout",
+      "label": "Layout",
+      "options": [
+        { "value": "stacked", "label": "Stacked" },
+        { "value": "overlay", "label": "Overlay" }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select",
+      "id": "item_1_alignment",
+      "label": "Content alignment",
+      "info": "Only applies to stacked layout",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "item_1_subheading",
+      "label": "Subheading",
+      "default": "<p>Subheading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_1_heading",
+      "label": "Heading",
+      "default": "<p>Heading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_1_text",
+      "label": "Text",
+      "default": "<p>Add your text content here</p>"
+    },
+    {
+      "type": "text",
+      "id": "item_1_button_text",
+      "label": "Button text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "item_1_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Item 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "item_2_enabled",
+      "label": "Enable item 2",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "item_2_layout",
+      "label": "Layout",
+      "options": [
+        { "value": "stacked", "label": "Stacked" },
+        { "value": "overlay", "label": "Overlay" }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select",
+      "id": "item_2_alignment",
+      "label": "Content alignment",
+      "info": "Only applies to stacked layout",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "item_2_subheading",
+      "label": "Subheading",
+      "default": "<p>Subheading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_2_heading",
+      "label": "Heading",
+      "default": "<p>Heading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_2_text",
+      "label": "Text",
+      "default": "<p>Add your text content here</p>"
+    },
+    {
+      "type": "text",
+      "id": "item_2_button_text",
+      "label": "Button text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "item_2_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Item 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "item_3_enabled",
+      "label": "Enable item 3",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "item_3_layout",
+      "label": "Layout",
+      "options": [
+        { "value": "stacked", "label": "Stacked" },
+        { "value": "overlay", "label": "Overlay" }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select",
+      "id": "item_3_alignment",
+      "label": "Content alignment",
+      "info": "Only applies to stacked layout",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "item_3_subheading",
+      "label": "Subheading",
+      "default": "<p>Subheading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_3_heading",
+      "label": "Heading",
+      "default": "<p>Heading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_3_text",
+      "label": "Text",
+      "default": "<p>Add your text content here</p>"
+    },
+    {
+      "type": "text",
+      "id": "item_3_button_text",
+      "label": "Button text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "item_3_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Item 4"
+    },
+    {
+      "type": "checkbox",
+      "id": "item_4_enabled",
+      "label": "Enable item 4",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "item_4_layout",
+      "label": "Layout",
+      "options": [
+        { "value": "stacked", "label": "Stacked" },
+        { "value": "overlay", "label": "Overlay" }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select",
+      "id": "item_4_alignment",
+      "label": "Content alignment",
+      "info": "Only applies to stacked layout",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "item_4_subheading",
+      "label": "Subheading",
+      "default": "<p>Subheading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_4_heading",
+      "label": "Heading",
+      "default": "<p>Heading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_4_text",
+      "label": "Text",
+      "default": "<p>Add your text content here</p>"
+    },
+    {
+      "type": "text",
+      "id": "item_4_button_text",
+      "label": "Button text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "item_4_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Item 5"
+    },
+    {
+      "type": "checkbox",
+      "id": "item_5_enabled",
+      "label": "Enable item 5",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "item_5_layout",
+      "label": "Layout",
+      "options": [
+        { "value": "stacked", "label": "Stacked" },
+        { "value": "overlay", "label": "Overlay" }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select",
+      "id": "item_5_alignment",
+      "label": "Content alignment",
+      "info": "Only applies to stacked layout",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_5_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "item_5_subheading",
+      "label": "Subheading",
+      "default": "<p>Subheading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_5_heading",
+      "label": "Heading",
+      "default": "<p>Heading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_5_text",
+      "label": "Text",
+      "default": "<p>Add your text content here</p>"
+    },
+    {
+      "type": "text",
+      "id": "item_5_button_text",
+      "label": "Button text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "item_5_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Item 6"
+    },
+    {
+      "type": "checkbox",
+      "id": "item_6_enabled",
+      "label": "Enable item 6",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "item_6_layout",
+      "label": "Layout",
+      "options": [
+        { "value": "stacked", "label": "Stacked" },
+        { "value": "overlay", "label": "Overlay" }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select",
+      "id": "item_6_alignment",
+      "label": "Content alignment",
+      "info": "Only applies to stacked layout",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_6_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "item_6_subheading",
+      "label": "Subheading",
+      "default": "<p>Subheading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_6_heading",
+      "label": "Heading",
+      "default": "<p>Heading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_6_text",
+      "label": "Text",
+      "default": "<p>Add your text content here</p>"
+    },
+    {
+      "type": "text",
+      "id": "item_6_button_text",
+      "label": "Button text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "item_6_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Item 7"
+    },
+    {
+      "type": "checkbox",
+      "id": "item_7_enabled",
+      "label": "Enable item 7",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "item_7_layout",
+      "label": "Layout",
+      "options": [
+        { "value": "stacked", "label": "Stacked" },
+        { "value": "overlay", "label": "Overlay" }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select",
+      "id": "item_7_alignment",
+      "label": "Content alignment",
+      "info": "Only applies to stacked layout",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_7_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "item_7_subheading",
+      "label": "Subheading",
+      "default": "<p>Subheading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_7_heading",
+      "label": "Heading",
+      "default": "<p>Heading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_7_text",
+      "label": "Text",
+      "default": "<p>Add your text content here</p>"
+    },
+    {
+      "type": "text",
+      "id": "item_7_button_text",
+      "label": "Button text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "item_7_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Item 8"
+    },
+    {
+      "type": "checkbox",
+      "id": "item_8_enabled",
+      "label": "Enable item 8",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "item_8_layout",
+      "label": "Layout",
+      "options": [
+        { "value": "stacked", "label": "Stacked" },
+        { "value": "overlay", "label": "Overlay" }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select",
+      "id": "item_8_alignment",
+      "label": "Content alignment",
+      "info": "Only applies to stacked layout",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_8_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "item_8_subheading",
+      "label": "Subheading",
+      "default": "<p>Subheading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_8_heading",
+      "label": "Heading",
+      "default": "<p>Heading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "item_8_text",
+      "label": "Text",
+      "default": "<p>Add your text content here</p>"
+    },
+    {
+      "type": "text",
+      "id": "item_8_button_text",
+      "label": "Button text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "item_8_button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content grid"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}

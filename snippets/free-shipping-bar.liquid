@@ -1,0 +1,46 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+FREE SHIPPING BAR
+----------------------------------------------------------------------------------------------------------------------
+
+Renders the free shipping bar component. It is used on cart page and cart drawer to render the remaining amount before
+being eligible for free shipping.
+{%- endcomment -%}
+
+{%- liquid
+  assign calculated_total_price = 0
+  assign bar_class = 'free-shipping-bar'
+  assign show_progress = show_progress | default: false
+  assign show_when_empty = show_when_empty | default: false
+
+  for line_item in cart.items
+    if line_item.requires_shipping
+      assign calculated_total_price = calculated_total_price | plus: line_item.final_line_price
+    endif
+  endfor
+
+  # We have to remove the cart level discount from the calculated amount
+
+  assign total_cart_discount = 0
+
+  for discount_application in cart.cart_level_discount_applications
+    assign total_cart_discount = total_cart_discount | plus: discount_application.total_allocated_amount
+  endfor
+
+  assign calculated_total_price = calculated_total_price | minus: total_cart_discount
+  assign threshold_cents = settings.cart_free_shipping_threshold | times: 100
+
+  if class != blank
+    assign bar_class = bar_class | append: ' ' | append: class
+  endif
+-%}
+
+{%- if cart.requires_shipping or show_when_empty -%}
+  <free-shipping-bar class="{{ bar_class }}" threshold="{{ settings.cart_free_shipping_threshold }}" total-price="{{ calculated_total_price }}" reached-message="{{ 'cart.free_shipping_bar.limit_reached_html' | t | escape }}" unreached-message="{{ 'cart.free_shipping_bar.limit_unreached_html' | t | escape }}">
+    {%- comment -%}The span below is the placeholder where the content will be inserted in JS{%- endcomment -%}
+    <span class="free-shipping-bar__text text-subdued">&nbsp;</span>
+    {%- if show_progress -%}
+      <progress-bar class="progress-bar free-shipping-bar__progress" aria-valuenow="{{ calculated_total_price }}" aria-valuemax="{{ threshold_cents }}" aria-valuemin="0"></progress-bar>
+    {%- endif -%}
+  </free-shipping-bar>
+{%- endif -%}

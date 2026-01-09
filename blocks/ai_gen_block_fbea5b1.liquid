@@ -1,0 +1,373 @@
+{% doc %}
+  @prompt
+    custom image upload section with full padding options and an option to upload a mobile and desktop image variant , need image sizing options too
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-custom-image-{{ ai_gen_id }} {
+    padding-top: {{ block.settings.padding_top_mobile }}px;
+    padding-bottom: {{ block.settings.padding_bottom_mobile }}px;
+    padding-left: {{ block.settings.padding_left_mobile }}px;
+    padding-right: {{ block.settings.padding_right_mobile }}px;
+  }
+
+  .ai-custom-image__wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    max-width: {% if block.settings.max_width == 'full' %}100%{% else %}{{ block.settings.max_width }}px{% endif %};
+    margin: 0 auto;
+  }
+
+  .ai-custom-image__desktop-{{ ai_gen_id }} {
+    display: none;
+    width: 100%;
+    height: {% if block.settings.image_height == 'auto' %}auto{% else %}{{ block.settings.image_height }}px{% endif %};
+    object-fit: {{ block.settings.object_fit }};
+  }
+
+  .ai-custom-image__mobile-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    height: {% if block.settings.image_height_mobile == 'auto' %}auto{% else %}{{ block.settings.image_height_mobile }}px{% endif %};
+    object-fit: {{ block.settings.object_fit }};
+  }
+
+  .ai-custom-image__placeholder-{{ ai_gen_id }} {
+    background-color: #f4f4f4;
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-custom-image__placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 500px;
+  }
+
+  .ai-custom-image__empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-custom-image-{{ ai_gen_id }} {
+      padding-top: {{ block.settings.padding_top_desktop }}px;
+      padding-bottom: {{ block.settings.padding_bottom_desktop }}px;
+      padding-left: {{ block.settings.padding_left_desktop }}px;
+      padding-right: {{ block.settings.padding_right_desktop }}px;
+    }
+
+    .ai-custom-image__desktop-{{ ai_gen_id }} {
+      display: block;
+    }
+
+    .ai-custom-image__mobile-{{ ai_gen_id }} {
+      display: none;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-custom-image-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-custom-image__wrapper-{{ ai_gen_id }}">
+    {% if block.settings.image_desktop or block.settings.image_mobile %}
+      {% if block.settings.image_desktop %}
+        <img
+          src="{{ block.settings.image_desktop | image_url: width: 2000 }}"
+          alt="{{ block.settings.image_desktop.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.image_desktop.width }}"
+          height="{{ block.settings.image_desktop.height }}"
+          class="ai-custom-image__desktop-{{ ai_gen_id }}"
+        >
+      {% endif %}
+
+      {% if block.settings.image_mobile %}
+        <img
+          src="{{ block.settings.image_mobile | image_url: width: 1000 }}"
+          alt="{{ block.settings.image_mobile.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.image_mobile.width }}"
+          height="{{ block.settings.image_mobile.height }}"
+          class="ai-custom-image__mobile-{{ ai_gen_id }}"
+        >
+      {% elsif block.settings.image_desktop %}
+        <img
+          src="{{ block.settings.image_desktop | image_url: width: 1000 }}"
+          alt="{{ block.settings.image_desktop.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.image_desktop.width }}"
+          height="{{ block.settings.image_desktop.height }}"
+          class="ai-custom-image__mobile-{{ ai_gen_id }}"
+        >
+      {% endif %}
+    {% else %}
+      <div class="ai-custom-image__placeholder-{{ ai_gen_id }}">
+        {{ 'image' | placeholder_svg_tag }}
+        <div class="ai-custom-image__empty-state-{{ ai_gen_id }}">
+          Next, add desktop and mobile images
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom image",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile image"
+    },
+    {
+      "type": "paragraph",
+      "content": "If no mobile image is selected, the desktop image will be used on mobile devices."
+    },
+    {
+      "type": "header",
+      "content": "Image sizing"
+    },
+    {
+      "type": "select",
+      "id": "max_width",
+      "label": "Maximum width",
+      "options": [
+        {
+          "value": "full",
+          "label": "Full width"
+        },
+        {
+          "value": "1600",
+          "label": "1600px"
+        },
+        {
+          "value": "1400",
+          "label": "1400px"
+        },
+        {
+          "value": "1200",
+          "label": "1200px"
+        },
+        {
+          "value": "1000",
+          "label": "1000px"
+        },
+        {
+          "value": "800",
+          "label": "800px"
+        },
+        {
+          "value": "600",
+          "label": "600px"
+        }
+      ],
+      "default": "full"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "label": "Desktop image height",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Auto"
+        },
+        {
+          "value": "300",
+          "label": "300px"
+        },
+        {
+          "value": "400",
+          "label": "400px"
+        },
+        {
+          "value": "500",
+          "label": "500px"
+        },
+        {
+          "value": "600",
+          "label": "600px"
+        },
+        {
+          "value": "700",
+          "label": "700px"
+        },
+        {
+          "value": "800",
+          "label": "800px"
+        }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "select",
+      "id": "image_height_mobile",
+      "label": "Mobile image height",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Auto"
+        },
+        {
+          "value": "200",
+          "label": "200px"
+        },
+        {
+          "value": "300",
+          "label": "300px"
+        },
+        {
+          "value": "400",
+          "label": "400px"
+        },
+        {
+          "value": "500",
+          "label": "500px"
+        },
+        {
+          "value": "600",
+          "label": "600px"
+        }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "select",
+      "id": "object_fit",
+      "label": "Image fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "header",
+      "content": "Mobile padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Left",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Right",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Desktop padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Left",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Right",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom image"
+    }
+  ]
+}
+{% endschema %}

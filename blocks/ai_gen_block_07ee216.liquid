@@ -1,0 +1,302 @@
+{% doc %}
+  @prompt
+    a 4 wide verticle video section formatted for tiktok videos where i can add tiktok videos and have them shown on the page , the video previews need to be smaller, make the whole section 40% smaller
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-tiktok-videos-{{ ai_gen_id }} {
+    padding: 24px 12px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-tiktok-videos__container-{{ ai_gen_id }} {
+    max-width: 840px;
+    margin: 0 auto;
+  }
+
+  .ai-tiktok-videos__heading-{{ ai_gen_id }} {
+    text-align: center;
+    margin: 0 0 24px;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+  }
+
+  .ai-tiktok-videos__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: {{ block.settings.gap }}px;
+  }
+
+  .ai-tiktok-videos__item-{{ ai_gen_id }} {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    background-color: #000000;
+    border-radius: {{ block.settings.border_radius }}px;
+    overflow: hidden;
+  }
+
+  .ai-tiktok-videos__video-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-tiktok-videos__placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    position: relative;
+  }
+
+  .ai-tiktok-videos__placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-tiktok-videos__empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+    width: 80%;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-tiktok-videos__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-tiktok-videos__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr);
+    }
+
+    .ai-tiktok-videos__heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.8 }}px;
+      margin-bottom: 18px;
+    }
+  }
+{% endstyle %}
+
+<tiktok-videos-{{ ai_gen_id }}
+  class="ai-tiktok-videos-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-tiktok-videos__container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-tiktok-videos__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="ai-tiktok-videos__grid-{{ ai_gen_id }}">
+      {% for i in (1..4) %}
+        {% liquid
+          assign video_key = 'video_' | append: i
+          assign video_url = block.settings[video_key]
+        %}
+
+        <div class="ai-tiktok-videos__item-{{ ai_gen_id }}">
+          {% if video_url != blank %}
+            <video
+              class="ai-tiktok-videos__video-{{ ai_gen_id }}"
+              src="{{ video_url }}"
+              playsinline
+              loop
+              muted
+              data-video-index="{{ i }}"
+            ></video>
+          {% else %}
+            <div class="ai-tiktok-videos__placeholder-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+              <div class="ai-tiktok-videos__empty-state-{{ ai_gen_id }}">
+                Add video {{ i }}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</tiktok-videos-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class TikTokVideos{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.videos = this.querySelectorAll('.ai-tiktok-videos__video-{{ ai_gen_id }}');
+        this.setupVideoObserver();
+        this.setupVideoControls();
+      }
+
+      setupVideoObserver() {
+        const options = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+              video.play().catch(() => {});
+            } else {
+              video.pause();
+            }
+          });
+        }, options);
+
+        this.videos.forEach((video) => {
+          observer.observe(video);
+        });
+      }
+
+      setupVideoControls() {
+        this.videos.forEach((video) => {
+          video.addEventListener('click', function() {
+            if (video.paused) {
+              video.play().catch(() => {});
+            } else {
+              video.pause();
+            }
+          });
+
+          video.addEventListener('ended', function() {
+            video.currentTime = 0;
+            video.play().catch(() => {});
+          });
+        });
+      }
+    }
+
+    customElements.define('tiktok-videos-{{ ai_gen_id }}', TikTokVideos{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "TikTok videos",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Watch on TikTok"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Videos"
+    },
+    {
+      "type": "url",
+      "id": "video_1",
+      "label": "Video 1"
+    },
+    {
+      "type": "url",
+      "id": "video_2",
+      "label": "Video 2"
+    },
+    {
+      "type": "url",
+      "id": "video_3",
+      "label": "Video 3"
+    },
+    {
+      "type": "url",
+      "id": "video_4",
+      "label": "Video 4"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap between videos",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Video border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "TikTok videos"
+    }
+  ]
+}
+{% endschema %}

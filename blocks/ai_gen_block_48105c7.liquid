@@ -1,0 +1,438 @@
+{% doc %}
+  @prompt
+    a section that has HEADING then body text but also an option to add a small image to the left of both the heading and paragraph/body text, there should be 3 of these stack ontop of each other, needs to have text align and content align options and font size and type selectable options, i want the content to be center aligned but the text alignments to be left, probably need an option for content width 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-stacked-items-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+  }
+
+  .ai-stacked-items__container-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.spacing_between_items }}px;
+    width: 100%;
+    align-items: {{ block.settings.content_alignment }};
+  }
+
+  .ai-stacked-items__item-{{ ai_gen_id }} {
+    display: flex;
+    align-items: flex-start;
+    gap: {{ block.settings.image_text_gap }}px;
+    width: 100%;
+    max-width: {{ block.settings.content_width }}%;
+  }
+
+  .ai-stacked-items__image-wrapper-{{ ai_gen_id }} {
+    flex-shrink: 0;
+    width: {{ block.settings.image_size }}px;
+    height: {{ block.settings.image_size }}px;
+  }
+
+  .ai-stacked-items__image-wrapper-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-stacked-items__image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-stacked-items__image-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-stacked-items__content-{{ ai_gen_id }} {
+    flex: 1;
+    min-width: 0;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-stacked-items__heading-{{ ai_gen_id }} {
+    margin: 0 0 {{ block.settings.heading_spacing }}px 0;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.3;
+    {% if block.settings.heading_font == 'heading' %}
+      font-family: var(--heading-font-family);
+      font-weight: var(--heading-font-weight);
+      font-style: var(--heading-font-style);
+      text-transform: var(--heading-text-transform);
+      letter-spacing: var(--heading-letter-spacing);
+    {% else %}
+      font-family: var(--text-font-family);
+      font-weight: var(--text-font-weight);
+      font-style: var(--text-font-style);
+    {% endif %}
+  }
+
+  .ai-stacked-items__text-{{ ai_gen_id }} {
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    line-height: 1.6;
+    {% if block.settings.body_font == 'heading' %}
+      font-family: var(--heading-font-family);
+      font-weight: var(--heading-font-weight);
+      font-style: var(--heading-font-style);
+    {% else %}
+      font-family: var(--text-font-family);
+      font-weight: var(--text-font-weight);
+      font-style: var(--text-font-style);
+    {% endif %}
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-stacked-items__item-{{ ai_gen_id }} {
+      gap: {{ block.settings.image_text_gap | times: 0.75 }}px;
+      max-width: 100%;
+    }
+
+    .ai-stacked-items__image-wrapper-{{ ai_gen_id }} {
+      width: {{ block.settings.image_size | times: 0.75 }}px;
+      height: {{ block.settings.image_size | times: 0.75 }}px;
+    }
+
+    .ai-stacked-items__heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.85 }}px;
+    }
+
+    .ai-stacked-items__text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.text_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<stacked-items-{{ ai_gen_id }} class="ai-stacked-items-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-stacked-items__container-{{ ai_gen_id }}">
+    {% for i in (1..3) %}
+      {% liquid
+        assign image_key = 'item_' | append: i | append: '_image'
+        assign heading_key = 'item_' | append: i | append: '_heading'
+        assign text_key = 'item_' | append: i | append: '_text'
+        
+        assign item_image = block.settings[image_key]
+        assign item_heading = block.settings[heading_key]
+        assign item_text = block.settings[text_key]
+      %}
+      
+      <div class="ai-stacked-items__item-{{ ai_gen_id }}">
+        {% if block.settings.show_images %}
+          <div class="ai-stacked-items__image-wrapper-{{ ai_gen_id }}">
+            {% if item_image %}
+              <img
+                src="{{ item_image | image_url: width: 200 }}"
+                alt="{{ item_image.alt | escape }}"
+                loading="lazy"
+                width="200"
+                height="200"
+              >
+            {% else %}
+              <div class="ai-stacked-items__image-placeholder-{{ ai_gen_id }}">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        
+        <div class="ai-stacked-items__content-{{ ai_gen_id }}">
+          {% if item_heading != blank %}
+            <h3 class="ai-stacked-items__heading-{{ ai_gen_id }}">{{ item_heading }}</h3>
+          {% endif %}
+          
+          {% if item_text != blank %}
+            <div class="ai-stacked-items__text-{{ ai_gen_id }}">{{ item_text }}</div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</stacked-items-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class StackedItems{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+    }
+    
+    customElements.define('stacked-items-{{ ai_gen_id }}', StackedItems{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Stacked items",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_images",
+      "label": "Show images",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Content width",
+      "default": 80
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "spacing_between_items",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Spacing between items",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "image_text_gap",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap between image and text",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_size",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Image size",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Font",
+      "options": [
+        {
+          "value": "heading",
+          "label": "Heading"
+        },
+        {
+          "value": "body",
+          "label": "Body"
+        }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 14,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "label": "Spacing below",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Color",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "header",
+      "content": "Body text"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Font",
+      "options": [
+        {
+          "value": "heading",
+          "label": "Heading"
+        },
+        {
+          "value": "body",
+          "label": "Body"
+        }
+      ],
+      "default": "body"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Color",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "header",
+      "content": "Item 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "item_1_heading",
+      "label": "Heading",
+      "default": "First heading"
+    },
+    {
+      "type": "richtext",
+      "id": "item_1_text",
+      "label": "Body text",
+      "default": "<p>Add your body text here. Describe your feature or benefit in detail.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Item 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "item_2_heading",
+      "label": "Heading",
+      "default": "Second heading"
+    },
+    {
+      "type": "richtext",
+      "id": "item_2_text",
+      "label": "Body text",
+      "default": "<p>Add your body text here. Describe your feature or benefit in detail.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Item 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "item_3_heading",
+      "label": "Heading",
+      "default": "Third heading"
+    },
+    {
+      "type": "richtext",
+      "id": "item_3_text",
+      "label": "Body text",
+      "default": "<p>Add your body text here. Describe your feature or benefit in detail.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stacked items"
+    }
+  ]
+}
+{% endschema %}
