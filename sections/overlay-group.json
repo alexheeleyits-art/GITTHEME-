@@ -22,9 +22,9 @@
         "show_checkout_button": true,
         "show_price_in_checkout_button": true,
         "cross_sell_products": [
-          "3-x-50ml-bundle",
-          "5x-100ml-bundle",
-          "5x-50ml"
+          "adore-amour",
+          "aqua-mist",
+          "bergamot-ember"
         ],
         "cross_sell_title": "Complete with",
         "cross_sell_stack_products": true
