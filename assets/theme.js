@@ -1503,6 +1503,7 @@ updateMessage_fn = function() {
   if (progressBar) {
     progressBar.valueMax = threshold;
     progressBar.valueNow = effectiveTotal;
+    progressBar.style.setProperty("--progress", `${progressValue}`);
   }
   if (effectiveTotal >= threshold) {
     messageElement.innerHTML = this.getAttribute("reached-message");
