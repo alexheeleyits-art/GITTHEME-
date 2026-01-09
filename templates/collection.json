@@ -77,23 +77,20 @@
     "main": {
       "type": "main-collection",
       "blocks": {
-        "inline_promo_3M783q": {
+        "inline_promo_LdYJnk": {
           "type": "inline_promo",
+          "disabled": true,
           "settings": {
-            "position": 1,
-            "image": "shopify://shop_images/Bundles_USPs.jpg",
-            "external_video_url": "",
-            "autoplay": true,
-            "show_controls": false,
-            "heading": "Featured scent",
-            "text": "<p>Share a short promo or highlight.</p>",
-            "button_label": "Shop now",
+            "position": 4,
+            "image": "shopify://shop_images/Scent_Haus_Terra_Noir_Product_Mockup_Image_100ml_V1.jpg",
+            "image_fit": "cover",
+            "image_position": "center",
             "link": ""
           }
         }
       },
       "block_order": [
-        "inline_promo_3M783q"
+        "inline_promo_LdYJnk"
       ],
       "custom_css": [
         ".color-swatch {--swatch-offset: 2px; --swatch-size: 2rem;}"
