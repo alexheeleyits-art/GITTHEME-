@@ -3222,6 +3222,18 @@ var ProductList = class extends HTMLElement {
     if (matchesMediaQuery("motion-safe") && this.querySelectorAll('product-card[reveal-on-scroll="true"]').length > 0) {
       inView6(this, this.reveal.bind(this));
     }
+    this.syncPromoHeights = this.syncPromoHeights.bind(this);
+    this.syncPromoHeights();
+    if ("ResizeObserver" in window) {
+      this._promoResizeObserver = new ResizeObserver(() => this.syncPromoHeights());
+      this._promoResizeObserver.observe(this);
+    } else {
+      window.addEventListener("resize", this.syncPromoHeights);
+    }
+  }
+  disconnectedCallback() {
+    this._promoResizeObserver?.disconnect();
+    window.removeEventListener("resize", this.syncPromoHeights);
   }
   reveal() {
     animate9(this.querySelectorAll('product-card[reveal-on-scroll="true"]'), {
@@ -3231,6 +3243,19 @@ var ProductList = class extends HTMLElement {
       duration: 0.2,
       easing: "ease-in-out",
       delay: stagger(0.05, { start: 0.4, easing: "ease-out" })
+    });
+  }
+  syncPromoHeights() {
+    const sampleCard = this.querySelector(".product-card--styled") || this.querySelector(".product-card");
+    if (!sampleCard) {
+      return;
+    }
+    const height = sampleCard.getBoundingClientRect().height;
+    if (!height) {
+      return;
+    }
+    this.querySelectorAll(".collection-promo-card--media-only").forEach((card) => {
+      card.style.setProperty("--collection-promo-target-height", `${height}px`);
     });
   }
 };

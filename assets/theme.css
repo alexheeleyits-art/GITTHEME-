@@ -2251,15 +2251,17 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
   visibility: hidden;
 }
 
+.collection-promo-card--media-only {
+  height: var(--collection-promo-target-height, auto);
+}
+
 .collection-promo-card--media-only .collection-promo-card__media {
-  grid-row: 1 / -1;
   height: 100%;
   aspect-ratio: auto;
-  z-index: 1;
 }
 
 .collection-promo-card--media-only .collection-promo-card__content--placeholder {
-  z-index: 0;
+  display: none;
 }
 
 .product-card__quick-add-button {
