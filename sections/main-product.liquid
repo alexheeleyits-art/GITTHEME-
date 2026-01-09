@@ -19,12 +19,20 @@
       break
     endif
   endfor
+
+  assign is_bundle_template = product.template_suffix == '3xbundle'
 -%}
 
 <style>
   #shopify-section-{{ section.id }} {
     --product-grid: "product-gallery" "product-info" {% if has_content_below_gallery %}"product-content"{% endif %} / minmax(0, 1fr);
   }
+
+  {%- if is_bundle_template -%}
+  #shopify-section-{{ section.id }} .product--3xbundle {
+    --product-grid: "product-gallery" "product-summary" "product-info" {% if has_content_below_gallery %}"product-content"{% endif %} / minmax(0, 1fr);
+  }
+  {%- endif -%}
 
   @media screen and (min-width: 1000px) {
     #shopify-section-{{ section.id }} {
@@ -34,16 +42,46 @@
         --product-grid: "product-gallery product-info" / minmax(0, {{ 100.0 | minus: section.settings.product_info_size | divided_by: 100.0 }}fr) minmax(0, {{ section.settings.product_info_size | divided_by: 100.0 }}fr);
       {%- endif -%}
     }
+
+    {%- if is_bundle_template -%}
+    #shopify-section-{{ section.id }} .product--3xbundle {
+      {%- if has_content_below_gallery -%}
+        --product-grid: "product-gallery product-info product-summary" "product-content product-content product-summary" / minmax(0, 1.1fr) minmax(0, 0.9fr) minmax(0, 0.7fr);
+      {%- else -%}
+        --product-grid: "product-gallery product-info product-summary" / minmax(0, 1.1fr) minmax(0, 0.9fr) minmax(0, 0.7fr);
+      {%- endif -%}
+    }
+    {%- endif -%}
   }
 </style>
 
 {%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
 {%- capture product_form_id -%}product-form-main-{{ product.id }}-{{ section.id }}{%- endcapture -%}
+{%- assign product_template_class = '' -%}
+{%- if product.template_suffix != blank -%}
+  {%- assign product_template_class = ' product--' | append: product.template_suffix -%}
+{%- endif -%}
+
+{%- if is_bundle_template -%}
+  {%- assign bundle_summary_types = 'vendor title price rating quantity_selector buy_buttons payment_terms' | split: ' ' -%}
+  {%- assign bundle_summary_blocks = '' | split: '' -%}
+  {%- assign bundle_builder_blocks = '' | split: '' -%}
+
+  {%- for block in section.blocks -%}
+    {%- assign block_as_arr = block | sort -%}
+
+    {%- if bundle_summary_types contains block.type -%}
+      {%- assign bundle_summary_blocks = bundle_summary_blocks | concat: block_as_arr -%}
+    {%- else -%}
+      {%- assign bundle_builder_blocks = bundle_builder_blocks | concat: block_as_arr -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
 
 <div class="section-spacing section-spacing--tight color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }}">
   <div class="container {% unless section.settings.container_size == 'full' %}container--{{ section.settings.container_size }}{% endunless %}">
     <product-rerender id="product-info-{{ product.id }}-{{ section.id }}" observe-form="{{ product_form_id }}" allow-partial-rerender>
-      <div class="product">
+      <div class="product{{ product_template_class }}">
         {%- if product.media.size > 0 -%}
           {%- render 'product-gallery',
               product: product,
@@ -56,13 +94,35 @@
               max_image_zoom_level: section.settings.max_image_zoom_level -%}
         {%- endif -%}
 
-        {%- render 'product-info', 
-          product: product, 
-          product_form_id: product_form_id,
-          center_basic_info: section.settings.center_basic_info, 
-          has_content_below_gallery: has_content_below_gallery, 
-          context: 'main_product' 
-        -%}
+        {%- if is_bundle_template -%}
+          {%- render 'product-info',
+            product: product,
+            product_form_id: product_form_id,
+            center_basic_info: section.settings.center_basic_info,
+            has_content_below_gallery: has_content_below_gallery,
+            context: 'main_product',
+            blocks: bundle_builder_blocks
+          -%}
+        {%- else -%}
+          {%- render 'product-info',
+            product: product,
+            product_form_id: product_form_id,
+            center_basic_info: section.settings.center_basic_info,
+            has_content_below_gallery: has_content_below_gallery,
+            context: 'main_product'
+          -%}
+        {%- endif -%}
+
+        {%- if is_bundle_template and bundle_summary_blocks != blank -%}
+          <aside class="product-bundle-summary" aria-label="Bundle summary">
+            <div class="bundle-summary">
+              <p class="bundle-summary__eyebrow smallcaps text-xxs">Bundle summary</p>
+              <div class="product-info__block-list product-info__block-list--summary">
+                {%- render 'product-info-blocks', blocks: bundle_summary_blocks, product: product, product_form_id: product_form_id, context: 'main_product', has_content_below_gallery: has_content_below_gallery -%}
+              </div>
+            </div>
+          </aside>
+        {%- endif -%}
 
         {%- comment -%}On Prestige, some content may be on the left part below the product gallery{%- endcomment -%}
         {%- if has_content_below_gallery -%}
