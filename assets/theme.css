@@ -2214,7 +2214,7 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
 
 .collection-promo-card {
   display: grid;
-  gap: .75rem;
+  gap: 1.25rem;
   align-content: start;
 }
 
@@ -2244,6 +2244,10 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
 .collection-promo-card__content {
   display: grid;
   gap: .5rem;
+}
+
+.collection-promo-card__content--placeholder {
+  min-height: 3.5rem;
 }
 
 .product-card__quick-add-button {
@@ -3397,13 +3401,21 @@ tr[onclick]:hover {
 }
 
 .free-shipping-bar__icon {
-  width: 2rem;
-  height: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.4rem;
   position: absolute;
   inset-block-start: 50%;
   left: var(--free-shipping-progress-percent, 0%);
   translate: -50% -50%;
   transition: left .45s ease-in-out;
+}
+
+.free-shipping-bar__icon-image {
+  height: 100%;
+  width: auto;
+  display: block;
 }
 
 .free-shipping-bar__icon svg {

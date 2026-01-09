@@ -16,9 +16,14 @@ Inputs:
   assign autoplay = block.settings.autoplay
   assign show_controls = block.settings.show_controls
   assign media_is_video = false
+  assign has_content = false
 
   if promo_video != blank or promo_video_url != blank
     assign media_is_video = true
+  endif
+
+  if heading != blank or text != blank or button_label != blank
+    assign has_content = true
   endif
 
   assign promo_aspect_ratio = 1
@@ -29,7 +34,7 @@ Inputs:
   endif
 -%}
 
-<article class="collection-promo-card" {% if reveal %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
+<article class="collection-promo-card{% unless has_content %} collection-promo-card--media-only{% endunless %}" {% if reveal %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
   {%- if media_is_video -%}
     <div class="collection-promo-card__media" style="--promo-aspect-ratio: {{ promo_aspect_ratio }}">
       {%- if promo_video != blank -%}
@@ -68,21 +73,19 @@ Inputs:
     {%- endif -%}
   {%- endif -%}
 
-  {%- if heading != blank or text != blank or button_label != blank -%}
-    <div class="collection-promo-card__content">
-      {%- if heading != blank -%}
-        <p class="h5">{{ heading }}</p>
-      {%- endif -%}
+  <div class="collection-promo-card__content{% unless has_content %} collection-promo-card__content--placeholder{% endunless %}"{% unless has_content %} aria-hidden="true"{% endunless %}>
+    {%- if heading != blank -%}
+      <p class="h5">{{ heading }}</p>
+    {%- endif -%}
 
-      {%- if text != blank -%}
-        <div class="rte text-subdued">
-          {{- text -}}
-        </div>
-      {%- endif -%}
+    {%- if text != blank -%}
+      <div class="rte text-subdued">
+        {{- text -}}
+      </div>
+    {%- endif -%}
 
-      {%- if button_label != blank and link != blank -%}
-        {%- render 'button', content: button_label, href: link, style: 'outline', size: 'sm', subdued: true -%}
-      {%- endif -%}
-    </div>
-  {%- endif -%}
+    {%- if button_label != blank and link != blank -%}
+      {%- render 'button', content: button_label, href: link, style: 'outline', size: 'sm', subdued: true -%}
+    {%- endif -%}
+  </div>
 </article>
