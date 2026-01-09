@@ -8,11 +8,13 @@ Inputs:
 {%- liquid
   assign media_image = block.settings.image
   assign link = block.settings.link
+  assign image_fit = block.settings.image_fit | default: 'cover'
+  assign image_position = block.settings.image_position | default: 'center'
 -%}
 
-<article class="collection-promo-card product-card--styled collection-promo-card--media-only" {{ block.shopify_attributes }}>
+<article class="collection-promo-card collection-promo-card--media-only" {{ block.shopify_attributes }}>
   {%- if link != blank -%}
-    <a href="{{ link }}" class="collection-promo-card__media">
+    <a href="{{ link }}" class="collection-promo-card__media" style="--promo-image-fit: {{ image_fit }}; --promo-image-position: {{ image_position }};">
       {%- if media_image != blank -%}
         {{- media_image | image_url: width: 1200 | image_tag: sizes: '100vw', widths: '240,320,400,480,600,720,840,960,1200', class: 'collection-promo-card__image', draggable: 'false', loading: 'lazy' -}}
       {%- else -%}
@@ -20,7 +22,7 @@ Inputs:
       {%- endif -%}
     </a>
   {%- else -%}
-    <div class="collection-promo-card__media">
+    <div class="collection-promo-card__media" style="--promo-image-fit: {{ image_fit }}; --promo-image-position: {{ image_position }};">
       {%- if media_image != blank -%}
         {{- media_image | image_url: width: 1200 | image_tag: sizes: '100vw', widths: '240,320,400,480,600,720,840,960,1200', class: 'collection-promo-card__image', draggable: 'false', loading: 'lazy' -}}
       {%- else -%}

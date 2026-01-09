@@ -2216,6 +2216,9 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
   display: grid;
   gap: 0;
   align-content: start;
+  border: 0;
+  padding: 0;
+  background: transparent;
 }
 
 .collection-promo-card__media {
@@ -2237,7 +2240,8 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
 .collection-promo-card__media :is(img, video, iframe, svg) {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: var(--promo-image-fit, cover);
+  object-position: var(--promo-image-position, center);
   display: block;
 }
 
