@@ -2,6 +2,74 @@
 
 <html lang="{{ request.locale.iso_code }}" dir="{% render 'direction' %}">
   <head>
+    <script>
+(function () {
+  // ---- CONFIG ----
+  var WEBGAINS_SCRIPT_URL = 'https://track.webgains.com/js/webgains.js';
+
+  // ---- HELPERS ----
+  function hasCashbackParam() {
+    var params = new URLSearchParams(window.location.search);
+    return params.has('cname') || params.has('siteid');
+  }
+
+  function markCashbackSession() {
+    sessionStorage.setItem('webgains_cashback', 'true');
+  }
+
+  function isCashbackSession() {
+    return sessionStorage.getItem('webgains_cashback') === 'true';
+  }
+
+  function loadWebgains() {
+    if (window.__webgainsLoaded) return;
+    window.__webgainsLoaded = true;
+
+    var s = document.createElement('script');
+    s.src = WEBGAINS_SCRIPT_URL;
+    s.async = true;
+    document.head.appendChild(s);
+  }
+
+  // ---- LOGIC ----
+  if (hasCashbackParam()) {
+    // Loyalty / cashback traffic → allowed as strictly necessary
+    markCashbackSession();
+    loadWebgains();
+
+    // Optional: clean URL after detection
+    var url = new URL(window.location.href);
+    url.searchParams.delete('cname');
+    url.searchParams.delete('siteid');
+    window.history.replaceState({}, document.title, url.pathname + url.search);
+  } else if (isCashbackSession()) {
+    // Same session continuation
+    loadWebgains();
+  }
+
+  // ---- CONSENT HOOKS (fallback for normal users) ----
+  // Cookiebot
+  window.addEventListener('CookiebotOnAccept', function () {
+    if (window.Cookiebot && Cookiebot.consent && Cookiebot.consent.marketing) {
+      loadWebgains();
+    }
+  });
+
+  // Usercentrics
+  window.addEventListener('UC_UI_INITIALIZED', function () {
+    if (window.UC_UI && UC_UI.getServicesBaseInfo) {
+      var services = UC_UI.getServicesBaseInfo();
+      services.forEach(function (service) {
+        if (service.consent && service.category === 'marketing') {
+          loadWebgains();
+        }
+      });
+    }
+  });
+
+})();
+</script>
+
 <!-- Start of Shoplift scripts -->
 {% render 'shoplift' %}
 <!-- End of Shoplift scripts -->
