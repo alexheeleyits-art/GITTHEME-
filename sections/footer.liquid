@@ -2,6 +2,13 @@
   #shopify-section-{{ section.id }} {
     --footer-content-justify-items: {% if section.settings.blocks.size <= 2 %}start{% else %}space-between{% endif %};
   }
+
+  .footer__business-address {
+    margin-top: 6px;
+    font-size: 10px;
+    line-height: 1.4;
+    opacity: 0.65;
+  }
 </style>
 
 {%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
@@ -135,6 +142,12 @@
           © {{ 'now' | date: '%Y' }} – {{ shop.name }} {{ powered_by_link }}
         </p>
 
+        {%- if section.settings.business_address != blank -%}
+          <p class="text-xxs text-subdued footer__business-address">
+            {{ section.settings.business_address }}
+          </p>
+        {%- endif -%}
+
         {%- if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
           <ul class="payment-methods unstyled-list">
             {%- for type in shop.enabled_payment_types -%}
@@ -178,6 +191,12 @@
       "id": "show_payment_icons",
       "label": "t:sections.footer.show_payment_icons",
       "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "business_address",
+      "label": "Business address",
+      "default": "123 Example Street, London, EC1A 1AA, United Kingdom"
     }
   ],
   "blocks": [
