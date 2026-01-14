@@ -1,1 +1,149 @@
-{"sections":{"faq":{"type":"faq","blocks":{"category":{"type":"category","settings":{"title":"Order","icon":"none","icon_width":16}},"question-1":{"type":"question","settings":{"question":"What is your return policy?","answer":"<p>We offer a l<strong>ifetime satisfaction guarantee <\/strong>on all unopened bottles. Opened bottles can only be returned if faulty. If you ever need help, just email <strong>info@scenthaus.co.uk<\/strong> and our team will guide you through the returns process.<\/p>"}},"question-2":{"type":"question","settings":{"question":"How long is delivery?","answer":"<p>UK delivery takes 2–4 working days, with express options available at checkout.<\/p>"}},"question-3":{"type":"question","settings":{"question":"Can I return a perfume if I don’t like the scent?","answer":"<p>We have a lifetime satisfaction guarantee, if there is something you’re not happy about you can return, exchange and refund, see our returns page for more details. <\/p>"}},"category_JKVw4P":{"type":"category","settings":{"title":"Fragrance","icon":"none","icon_width":16}},"question_mccCbw":{"type":"question","settings":{"question":"What are “inspired” fragrances?","answer":"<p>These are scents crafted to capture the <em>character and vibe<\/em> of well-known designer perfumes. <\/p>"}},"question_Dy7rUH":{"type":"question","settings":{"question":"Are your fragrances the same as designer brands?","answer":"<p>They’re original formulations created by professional perfumers, inspired by the same note families and profiles.<\/p>"}},"question_jyhbQ4":{"type":"question","settings":{"question":"How long do your perfumes last?","answer":"<p>Our fragrances are <strong>Eau de Parfum (EDP) strength<\/strong>, meaning 6–10 hours depending on skin type, weather, and the specific scent.<\/p>"}},"question_LHDGbV":{"type":"question","settings":{"question":"Are your fragrances vegan & cruelty-free?","answer":"<p>Absolutely — all scents are <strong>vegan, cruelty-free, and paraben-free<\/strong>.<\/p>"}},"question_9aBwAc":{"type":"question","settings":{"question":"Are your perfumes safe for sensitive skin?","answer":"<p>Our fragrances meet UK\/EU cosmetic safety standards. If you have very reactive skin, we always recommend a patch test first.<\/p>"}},"question_WEjtQ7":{"type":"question","settings":{"question":"What size bottles do you offer?","answer":"<p>We offer 100ml\/50ml\/5ml bottles and can be bundled together here<\/p>"}},"question_XyAD6r":{"type":"question","settings":{"question":"How close are your fragrances to the designer originals?","answer":"<p>Most customers say they’re <strong>extremely close<\/strong>, capturing the same mood, projection, and performance at a fraction of the price.<\/p>"}},"question_epqmK9":{"type":"question","settings":{"question":"Will the scent change over time?","answer":"<p>Like all fragrances, notes can open differently on different skin types but the core scent profile remains consistent.<\/p>"}}},"block_order":["category","question-1","question-2","question-3","category_JKVw4P","question_mccCbw","question_Dy7rUH","question_jyhbQ4","question_LHDGbV","question_9aBwAc","question_WEjtQ7","question_XyAD6r","question_epqmK9"],"settings":{"color_scheme":"scheme-2","separate_section_with_border":true,"show_categories":true,"subheading":"Need help?","title":"Frequently Asked Questions","content":""}}},"order":["faq"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "category": {
+          "type": "category",
+          "settings": {
+            "title": "Order",
+            "icon": "none",
+            "icon_width": 16
+          }
+        },
+        "question-1": {
+          "type": "question",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We offer a l<strong>ifetime satisfaction guarantee </strong>on all unopened bottles. Opened bottles can only be returned if faulty. If you ever need help, just email <strong>info@scenthaus.co.uk</strong> and our team will guide you through the returns process.</p>"
+          }
+        },
+        "question-2": {
+          "type": "question",
+          "settings": {
+            "question": "How long is delivery?",
+            "answer": "<p>UK delivery takes 2–4 working days, with express options available at checkout.</p>"
+          }
+        },
+        "question-3": {
+          "type": "question",
+          "settings": {
+            "question": "Can I return a perfume if I don’t like the scent?",
+            "answer": "<p>We have a lifetime satisfaction guarantee, if there is something you’re not happy about you can return, exchange and refund, see our returns page for more details. </p>"
+          }
+        },
+        "category_JKVw4P": {
+          "type": "category",
+          "settings": {
+            "title": "Fragrance",
+            "icon": "none",
+            "icon_width": 16
+          }
+        },
+        "question_mccCbw": {
+          "type": "question",
+          "settings": {
+            "question": "What are “inspired” fragrances?",
+            "answer": "<p>These are scents crafted to capture the <em>character and vibe</em> of well-known designer perfumes. </p>"
+          }
+        },
+        "question_Dy7rUH": {
+          "type": "question",
+          "settings": {
+            "question": "Are your fragrances the same as designer brands?",
+            "answer": "<p>They’re original formulations created by professional perfumers, inspired by the same note families and profiles.</p>"
+          }
+        },
+        "question_jyhbQ4": {
+          "type": "question",
+          "settings": {
+            "question": "How long do your perfumes last?",
+            "answer": "<p>Our fragrances are <strong>Eau de Parfum (EDP) strength</strong>, meaning 6–10 hours depending on skin type, weather, and the specific scent.</p>"
+          }
+        },
+        "question_LHDGbV": {
+          "type": "question",
+          "settings": {
+            "question": "Are your fragrances vegan & cruelty-free?",
+            "answer": "<p>Absolutely — all scents are <strong>vegan, cruelty-free, and paraben-free</strong>.</p>"
+          }
+        },
+        "question_9aBwAc": {
+          "type": "question",
+          "settings": {
+            "question": "Are your perfumes safe for sensitive skin?",
+            "answer": "<p>Our fragrances meet UK/EU cosmetic safety standards. If you have very reactive skin, we always recommend a patch test first.</p>"
+          }
+        },
+        "question_WEjtQ7": {
+          "type": "question",
+          "settings": {
+            "question": "What size bottles do you offer?",
+            "answer": "<p>We offer 100ml/50ml/5ml bottles and can be bundled together here</p>"
+          }
+        },
+        "question_XyAD6r": {
+          "type": "question",
+          "settings": {
+            "question": "How close are your fragrances to the designer originals?",
+            "answer": "<p>Most customers say they’re <strong>extremely close</strong>, capturing the same mood, projection, and performance at a fraction of the price.</p>"
+          }
+        },
+        "question_epqmK9": {
+          "type": "question",
+          "settings": {
+            "question": "Will the scent change over time?",
+            "answer": "<p>Like all fragrances, notes can open differently on different skin types but the core scent profile remains consistent.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "category",
+        "question-1",
+        "question-2",
+        "question-3",
+        "category_JKVw4P",
+        "question_mccCbw",
+        "question_Dy7rUH",
+        "question_jyhbQ4",
+        "question_LHDGbV",
+        "question_9aBwAc",
+        "question_WEjtQ7",
+        "question_XyAD6r",
+        "question_epqmK9"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": true,
+        "show_categories": true,
+        "subheading": "Need help?",
+        "title": "Frequently Asked Questions",
+        "content": ""
+      }
+    },
+    "contact_dyRic9": {
+      "type": "contact",
+      "name": "t:sections.contact.presets.contact_form.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "subheading": "",
+        "title": "Contact",
+        "content": ""
+      }
+    }
+  },
+  "order": [
+    "faq",
+    "contact_dyRic9"
+  ]
+}
