@@ -1,1 +1,139 @@
-{"type":"footer","name":"Footer group","sections":{"text-with-icons":{"type":"text-with-icons","blocks":{"icon-1":{"type":"item","settings":{"icon":"picto-award-gift","icon_width":24,"mobile_icon_width":24,"title":"Free delivery worldwide","content":"<p>Short content about your store<\/p>"}},"icon-2":{"type":"item","settings":{"icon":"picto-award-gift","icon_width":24,"mobile_icon_width":24,"title":"Satisfied or refunded","content":"<p>Short content about your store<\/p>"}},"icon-3":{"type":"item","settings":{"icon":"picto-award-gift","icon_width":24,"mobile_icon_width":24,"title":"Top-notch support","content":"<p>Short content about your store<\/p>"}},"icon-4":{"type":"item","settings":{"icon":"picto-award-gift","icon_width":24,"mobile_icon_width":24,"title":"Secure payments","content":"<p>Short content about your store<\/p>"}}},"block_order":["icon-1","icon-2","icon-3","icon-4"],"disabled":true,"settings":{"color_scheme":"","separate_section_with_border":true,"stack_on_mobile":false,"icon_color":"","text_color":"","text_alignment":"center"}},"custom_liquid_UT6pmA":{"type":"custom-liquid","custom_css":[".inspired-by-item a b {text-decoration: underline; \/* force underline *\/}",".inspired-by-seo {font-size: 11px; \/* slightly smaller *\/}"],"name":"t:sections.custom_liquid.presets.custom_liquid.name","settings":{"color_scheme":"scheme-3","separate_section_with_border":false,"remove_vertical_spacing":false,"remove_horizontal_spacing":false,"liquid":"<div class=\"inspired-by-wrapper\">\n  <div class=\"inspired-by-seo\">\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/saffron-luxe\"><b>Baccarat Rouge 540<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/parisian-whisper\"><b>Coco Mademoiselle<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/citrus-noir\"><b>YSL - Libre<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/velvet-glow\"><b>La Vie Est Belle<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/fleur-de-boom\"><b>Flowerbomb – Viktor & Rolf<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/adore-amour\"><b>J’adore - Dior<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/blush-meadow\"><b>Daisy – Marc Jacobs<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/ocean-noir\"><b>Bleu de Chanel<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/cedar-blaze\"><b>Creed Aventus<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/bergamot-ember\"><b>Acqua di Gio - Armani<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/aqua-mist\"><b>Terre d’Hermès – Hermès<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/terra-noir\"><b>Invictus<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/victory-tide\"><b>Spicebomb – Viktor & Rolf<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/cinderwood\"><b>Louis Vuitton - California Dream<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/sunset-muse\"><b>Ombre Nomade<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/ombre-oud\"><b>Oud Wood<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/cardamom-oud\"><b>Lost Cherry<\/b><\/a>\n    <\/span>\n    <span class=\"inspired-by-separator\">|<\/span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https:\/\/scent-haus-fragrance.myshopify.com\/products\/cherry-blaze\"><b>Halfeti – Penhaligon’s<\/b><\/a>\n    <\/span>\n\n  <\/div>\n<\/div>","text_alignment":"center"}},"footer":{"type":"footer","blocks":{"custom_liquid_JXA6UW":{"type":"custom_liquid","settings":{"custom_liquid":"Stay up to date\nSign up for exclusive offers, new in & so much more.\n<div class=\"klaviyo-form-UULAD9\"><\/div>"}},"links":{"type":"links","settings":{"menu":"shop","show_menu_title":true,"menu_title":""}},"links_3949m9":{"type":"links","settings":{"menu":"footer","show_menu_title":true,"menu_title":""}}},"block_order":["custom_liquid_JXA6UW","links","links_3949m9"],"custom_css":[".footer__block {flex: 0 0 auto;}",".footer__block--custom_liquid {flex-basis: 360px;}"],"settings":{"color_scheme":"","separate_section_with_border":true,"show_social_media":true,"show_payment_icons":true}}},"order":["text-with-icons","custom_liquid_UT6pmA","footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "text-with-icons": {
+      "type": "text-with-icons",
+      "blocks": {
+        "icon-1": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-award-gift",
+            "icon_width": 24,
+            "mobile_icon_width": 24,
+            "title": "Free delivery worldwide",
+            "content": "<p>Short content about your store</p>"
+          }
+        },
+        "icon-2": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-award-gift",
+            "icon_width": 24,
+            "mobile_icon_width": 24,
+            "title": "Satisfied or refunded",
+            "content": "<p>Short content about your store</p>"
+          }
+        },
+        "icon-3": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-award-gift",
+            "icon_width": 24,
+            "mobile_icon_width": 24,
+            "title": "Top-notch support",
+            "content": "<p>Short content about your store</p>"
+          }
+        },
+        "icon-4": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-award-gift",
+            "icon_width": 24,
+            "mobile_icon_width": 24,
+            "title": "Secure payments",
+            "content": "<p>Short content about your store</p>"
+          }
+        }
+      },
+      "block_order": [
+        "icon-1",
+        "icon-2",
+        "icon-3",
+        "icon-4"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "stack_on_mobile": false,
+        "icon_color": "",
+        "text_color": "",
+        "text_alignment": "center"
+      }
+    },
+    "custom_liquid_UT6pmA": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".inspired-by-item a b {text-decoration: underline; /* force underline */}",
+        ".inspired-by-seo {font-size: 11px; /* slightly smaller */}"
+      ],
+      "name": "t:sections.custom_liquid.presets.custom_liquid.name",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "separate_section_with_border": false,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<div class=\"inspired-by-wrapper\">\n  <div class=\"inspired-by-seo\">\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/saffron-luxe\"><b>Baccarat Rouge 540</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/parisian-whisper\"><b>Coco Mademoiselle</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/citrus-noir\"><b>YSL - Libre</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/velvet-glow\"><b>La Vie Est Belle</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/fleur-de-boom\"><b>Flowerbomb – Viktor & Rolf</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/adore-amour\"><b>J’adore - Dior</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/blush-meadow\"><b>Daisy – Marc Jacobs</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/ocean-noir\"><b>Bleu de Chanel</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/cedar-blaze\"><b>Creed Aventus</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/bergamot-ember\"><b>Acqua di Gio - Armani</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/aqua-mist\"><b>Terre d’Hermès – Hermès</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/terra-noir\"><b>Invictus</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/victory-tide\"><b>Spicebomb – Viktor & Rolf</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/cinderwood\"><b>Louis Vuitton - California Dream</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/sunset-muse\"><b>Ombre Nomade</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/ombre-oud\"><b>Oud Wood</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/cardamom-oud\"><b>Lost Cherry</b></a>\n    </span>\n    <span class=\"inspired-by-separator\">|</span>\n\n    <span class=\"inspired-by-item\">\n      Inspired by <a href=\"https://scent-haus-fragrance.myshopify.com/products/cherry-blaze\"><b>Halfeti – Penhaligon’s</b></a>\n    </span>\n\n  </div>\n</div>",
+        "text_alignment": "center"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "custom_liquid_JXA6UW": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "Stay up to date\nSign up for exclusive offers, new in & so much more.\n<div class=\"klaviyo-form-UULAD9\"></div>"
+          }
+        },
+        "links": {
+          "type": "links",
+          "settings": {
+            "menu": "shop",
+            "show_menu_title": true,
+            "menu_title": ""
+          }
+        },
+        "links_3949m9": {
+          "type": "links",
+          "settings": {
+            "menu": "footer",
+            "show_menu_title": true,
+            "menu_title": ""
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_JXA6UW",
+        "links",
+        "links_3949m9"
+      ],
+      "custom_css": [
+        ".footer__block {flex: 0 0 auto;}",
+        ".footer__block--custom_liquid {flex-basis: 360px;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "show_social_media": true,
+        "show_payment_icons": true,
+        "business_address": "Scent haus Ltd - Unit 38-41 Waddington Way, Rotherham, England, S65 3SH"
+      }
+    }
+  },
+  "order": [
+    "text-with-icons",
+    "custom_liquid_UT6pmA",
+    "footer"
+  ]
+}
