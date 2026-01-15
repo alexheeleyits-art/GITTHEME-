@@ -135,12 +135,25 @@
         "text_position": "center",
         "remove_vertical_spacing": false
       }
+    },
+    "custom_liquid_hdkCih": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom_liquid.presets.custom_liquid.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "{% if collection.metafields.custom.long_desc %}\n  <div class=\"collection-long-description\" style=\"max-width: 1200px; margin: 40px auto; padding: 0 20px;\">\n    {{ collection.metafields.custom.long_desc }}\n  </div>\n{% endif %}",
+        "text_alignment": "center"
+      }
     }
   },
   "order": [
     "collection-banner",
     "blocks_LPUw9m",
     "main",
-    "rich_text_EKBAeW"
+    "rich_text_EKBAeW",
+    "custom_liquid_hdkCih"
   ]
 }
