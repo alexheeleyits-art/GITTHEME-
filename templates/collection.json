@@ -84,7 +84,7 @@
             "image": "shopify://shop_images/Scent_Haus_Terra_Noir_Product_Mockup_Image_100ml_V1.jpg",
             "image_fit": "cover",
             "image_position": "center",
-            "link": ""
+            "link": "{{ collection.url }}"
           }
         }
       },
@@ -129,8 +129,8 @@
       "name": "t:sections.rich_text.presets.rich_text.name",
       "settings": {
         "color_scheme": "scheme-2",
-        "separate_section_with_border": true,
-        "content_width": "sm",
+        "separate_section_with_border": false,
+        "content_width": "md",
         "text_position": "center",
         "remove_vertical_spacing": false
       }
