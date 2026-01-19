@@ -183,6 +183,17 @@
             "liquid": "",
             "page": ""
           }
+        },
+        "accordion_rVDfqn": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": true,
+            "icon": "picto-document",
+            "title": "DISCLAIMER",
+            "content": "<p>All fragrance references across Scent Haus are used purely as a point of comparison to help describe scent styles and profiles. Our products are <strong>independent creations</strong> and should never be interpreted as the original designer, high-street, or niche fragrances they may be inspired by.</p><p>Any brand names, trademarks, or copyrights mentioned whether explicitly or implicitly remain the property of their respective owners. Scent Haus has <strong>no connection, partnership, endorsement, or affiliation</strong> with any trademark holder, brand, or manufacturer referenced.</p><p>Our fragrances are inspired interpretations, <strong>not replicas</strong>, and are crafted to stand on their own merit rather than imitate or reproduce any original scent. References are included solely for identification and descriptive purposes, and do not suggest approval, sponsorship, or association of any kind.</p><p>In short: we celebrate great scent profiles — we don’t pretend to be them.</p>",
+            "liquid": "",
+            "page": ""
+          }
         }
       },
       "block_order": [
@@ -206,7 +217,8 @@
         "accordion_UVR8fW",
         "accordion_Ytpcff",
         "accordion_3ArUhL",
-        "accordion_fiTzt4"
+        "accordion_fiTzt4",
+        "accordion_rVDfqn"
       ],
       "custom_css": [
         ".color-swatch {--swatch-offset: 2px; --swatch-size: 2.5rem;}",
