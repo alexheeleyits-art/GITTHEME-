@@ -244,6 +244,7 @@
     },
     "related_products_GeRiiB": {
       "type": "related-products",
+      "disabled": true,
       "name": "t:sections.related_products.presets.related_products.name",
       "settings": {
         "color_scheme": "scheme-2",
