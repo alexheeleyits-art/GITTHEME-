@@ -31,7 +31,7 @@
   {% if product.media.size > 0 %}
     <div class="product-card__figure product-card__figure--styled">
 
-      <a href="{{ product.url }}" class="product-card__media product-card__media-link" draggable="false" data-instant>
+      <a href="{{ product.url | split: '?' | first }}" class="product-card__media product-card__media-link" draggable="false" data-instant>
 
         {% capture sizes %}
           (max-width: 699px) 74vw, (max-width: 999px) 38vw, 380px
