@@ -1,1 +1,521 @@
-{"sections":{"1767181831ad2e3832":{"type":"_blocks","blocks":{"ai_gen_block_9be8eb7_iY4tX3":{"type":"ai_gen_block_9be8eb7","settings":{"slide_height_mobile":500,"slide_height_desktop":700,"content_vertical_alignment":"center","content_horizontal_alignment":"center","text_alignment":"center","subheading_size":14,"heading_size_mobile":32,"heading_size_desktop":56,"text_size":16,"background_color":"#000000","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30,"button_background":"#ffffff","button_text_color":"#1c1c1c","button_hover_background":"#f4f4f4","button_secondary_background":"#ffffff","button_secondary_text_color":"#1c1c1c","button_secondary_hover_background":"#ffffff1a","button_border_radius":0,"show_arrows":false,"show_dots":false,"autoplay":false,"autoplay_speed":5,"slide_1_enabled":true,"slide_1_video_shopify":"shopify:\/\/files\/videos\/Scent Haus_Homepage Hero Video_V1.mp4","slide_1_video_url":"","slide_1_show_overlay":true,"slide_1_subheading":"FOREVER TIMELESS","slide_1_heading":"A COLLECTION INSPIRED BY ICONS","slide_1_text":"","slide_1_button_text":"FOR HER","slide_1_button_link":"shopify:\/\/collections\/womens","slide_1_button_2_text":"FOR HIM","slide_1_button_2_link":"shopify:\/\/collections\/mens","slide_2_enabled":false,"slide_2_video_url":"","slide_2_show_overlay":true,"slide_2_subheading":"","slide_2_heading":"","slide_2_text":"","slide_2_button_text":"","slide_2_button_link":"","slide_2_button_2_text":"","slide_2_button_2_link":"","slide_3_enabled":false,"slide_3_video_url":"","slide_3_show_overlay":true,"slide_3_subheading":"","slide_3_heading":"","slide_3_text":"","slide_3_button_text":"","slide_3_button_link":"","slide_3_button_2_text":"","slide_3_button_2_link":""},"blocks":{}}},"block_order":["ai_gen_block_9be8eb7_iY4tX3"],"settings":{"color_scheme":"","separate_section_with_border":true,"remove_vertical_spacing":true,"remove_horizontal_spacing":true}},"slideshow":{"type":"slideshow","blocks":{"image_reF4re":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Hero.jpg","mobile_image":"shopify:\/\/shop_images\/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Hero.jpg","subheading":"FOREVER TIMELESS","title":"OUD HAS NEVER BEEN SO MYSTICAL","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","content_max_width":520,"button_1_text":"FOR HIM","button_1_link":"shopify:\/\/collections\/mens","button_1_style":"solid","button_1_background":"#ffffff","button_1_text_color":"#1c1c1c","button_2_text":"FOR HER","button_2_link":"shopify:\/\/collections\/womens","button_2_style":"solid","button_2_background":"#ffffff","button_2_text_color":"#000000","background":"","background_opacity":50,"text_color":"#ffffff","border_color":"","gradient_overlay":""}}},"block_order":["image_reF4re"],"disabled":true,"custom_css":[],"settings":{"allow_transparent_header":false,"show_next_section_button":true,"media_size":"fill","show_initial_transition":true,"autoplay":true,"autoplay_pause_on_video":true,"cycle_speed":5,"background":"#000000","controls_color":"#ffffff"}},"rich_text_77VFkm":{"type":"rich-text","blocks":{"subheading_fCKhQR":{"type":"subheading","disabled":true,"settings":{"text":"Subheading"}},"heading_T4G3cJ":{"type":"heading","settings":{"text":"<strong>CRAFTED FOR THE MOMENT<\/strong>","heading_tag":"h1"}},"richtext_fHp9w4":{"type":"richtext","settings":{"content":"<p>Welcome to Scent Haus, the place to be inspired by those who have designed the best fragrances and scents from around the world. We craft fragrances to enhance every moment, from elevating your every day to signature pieces for those special days. Your signature scent is waiting for you...<\/p>"}},"button_HdeNPz":{"type":"button","settings":{"style":"solid","text":"FIND YOUR FRAGRANCE","url":"shopify:\/\/pages\/find-your-perfect-scent","background":"#000000","text_color":"#ffffff"}}},"block_order":["subheading_fCKhQR","heading_T4G3cJ","richtext_fHp9w4","button_HdeNPz"],"name":"t:sections.rich_text.presets.rich_text.name","settings":{"color_scheme":"scheme-2","separate_section_with_border":true,"content_width":"sm","text_position":"center","remove_vertical_spacing":false}},"multi_column_khdAH4":{"type":"multi-column","blocks":{"image_with_text_BVCyh7":{"type":"image_with_text","settings":{"image":"shopify:\/\/shop_images\/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Cat_For_Him.jpg","title":"FRAGRANCE FOR HIM","heading_tag":"h6","content":"","link_url":"shopify:\/\/collections\/mens","link_text":""}},"image_with_text_7TP8AF":{"type":"image_with_text","settings":{"image":"shopify:\/\/shop_images\/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Cat_For_Her.jpg","title":"fragrance for her","heading_tag":"h6","content":"","link_url":"shopify:\/\/collections\/womens","link_text":""}},"image_with_text_tcqaAP":{"type":"image_with_text","settings":{"image":"shopify:\/\/shop_images\/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Cat_For_All.jpg","title":"fragrance for all","heading_tag":"h6","content":"","link_url":"shopify:\/\/collections\/unisex","link_text":""}}},"block_order":["image_with_text_BVCyh7","image_with_text_7TP8AF","image_with_text_tcqaAP"],"name":"t:sections.multi_column.presets.multi_column.name","settings":{"color_scheme":"scheme-2","separate_section_with_border":false,"columns_per_row":3,"stack_on_mobile":false,"overlap_image":false,"content_alignment":"center","text_alignment":"center","spacing":"sm","subheading":"","title":"<strong>EXPLORE THE CREATIONS<\/strong>","content":""}},"featured_collections_CRJ88A":{"type":"featured-collections","blocks":{"collection_pWNiCc":{"type":"collection","settings":{"collection":"all","products_count":8,"title":"","link_url":"","link_text":"SHOP BEST SELLERS"}},"collection_kh7ReE":{"type":"collection","settings":{"collection":"mens","products_count":8,"title":"","link_url":"","link_text":"View all"}},"collection_GVwyyg":{"type":"collection","settings":{"collection":"womens","products_count":8,"title":"","link_url":"","link_text":"View all"}}},"block_order":["collection_pWNiCc","collection_kh7ReE","collection_GVwyyg"],"custom_css":[".h2,:where(.prose h2) {font-size: 15px; line-height: 1.5;}"],"name":"t:sections.featured_collections.presets.featured_collections.name","settings":{"color_scheme":"scheme-2","separate_section_with_border":true,"hide_product_information":false,"stack_products":false,"products_per_row_mobile":"2","products_per_row_desktop":4,"horizontal_spacing_factor":1,"vertical_spacing_factor":1,"subheading":"<strong>THE FAVOURITES<\/strong>"}},"media_grid_33Tbkp":{"type":"media-grid","blocks":{"image_Apwza7":{"type":"image","settings":{"color_scheme":"","image":"shopify:\/\/shop_images\/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Refreshing_Zests_With_Gradient.jpg","column_count":"8","row_count":2,"title":"REFRESHING ZESTS","heading_tag":"h4","content":"","link_text":"","link_url":"shopify:\/\/collections\/citrus-fragrance","link_style":"link","text_position":"place-self-end-center text-center","overlay_color":"#000000","overlay_opacity":0}},"image_mFP9nW":{"type":"image","settings":{"color_scheme":"","image":"shopify:\/\/shop_images\/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Cat_Sweet_Florals_With_Gradient.jpg","column_count":"4","row_count":1,"title":"SWEET FLORALS","heading_tag":"h4","content":"","link_text":"","link_url":"shopify:\/\/collections\/fruity-fragrance","link_style":"link","text_position":"place-self-end-center text-center","overlay_color":"#000000","overlay_opacity":0}},"image_4gmrGn":{"type":"image","settings":{"color_scheme":"","image":"shopify:\/\/shop_images\/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Cat_Earth_Tones_With_Gradient.jpg","column_count":"4","row_count":1,"title":"EARTH TONES","heading_tag":"h4","content":"","link_text":"","link_url":"shopify:\/\/collections\/woody-fragrances","link_style":"link","text_position":"place-self-end-center text-center","overlay_color":"#000000","overlay_opacity":0}}},"block_order":["image_Apwza7","image_mFP9nW","image_4gmrGn"],"custom_css":[],"name":"t:sections.media_grid.presets.media_grid.name","settings":{"color_scheme":"scheme-35540d49-3c79-4369-8fd7-cf7d5cd46899","separate_section_with_border":true,"desktop_row_height":290,"mobile_row_height":180,"section_width":"lg","spacing":"md","subheading":"","title":"<strong>FIND YOUR FLAVOUR<\/strong>","content":""}},"featured_collections_cDxXhq":{"type":"featured-collections","blocks":{"collection_FeTR9n":{"type":"collection","settings":{"collection":"bundles","products_count":8,"title":"","link_url":"","link_text":"View all"}},"collection_nDU7Rg":{"type":"collection","settings":{"collection":"mens","products_count":8,"title":"","link_url":"","link_text":"View all"}},"collection_LxbTnh":{"type":"collection","settings":{"collection":"womens","products_count":8,"title":"","link_url":"","link_text":"View all"}},"collection_8fRG8H":{"type":"collection","settings":{"collection":"unisex","products_count":8,"title":"","link_url":"","link_text":"View all"}}},"block_order":["collection_FeTR9n","collection_nDU7Rg","collection_LxbTnh","collection_8fRG8H"],"name":"t:sections.featured_collections.presets.featured_collections.name","settings":{"color_scheme":"scheme-35540d49-3c79-4369-8fd7-cf7d5cd46899","separate_section_with_border":true,"hide_product_information":false,"stack_products":false,"products_per_row_mobile":"2","products_per_row_desktop":4,"horizontal_spacing_factor":1,"vertical_spacing_factor":1,"subheading":""}},"multiple_media_with_text_dNVyFw":{"type":"multiple-media-with-text","blocks":{"image_YdC8Mr":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Scent_Haus_Image_1.jpg","rotation":0}},"image_CapyUd":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Scent_Haus_Image_2.jpg","rotation":0}}},"block_order":["image_YdC8Mr","image_CapyUd"],"name":"t:sections.multiple_media_with_text.presets.multiple_media_with_text.name","settings":{"color_scheme":"","reveal_on_scroll":true,"separate_section_with_border":true,"media_position_desktop":"after_text","media_position_mobile":"before_text","media_layout":"overlap","media_alignment":"center","media_alignment_offset":0,"media_mobile_alignment_offset":0,"text_alignment":"center","subheading":"WELCOME TO","title":"<strong>SCENT HAUS<\/strong>","content":"<p>At Scent Haus, we believe fragrance should make a statement. Discover refined, long-lasting scents that elevate your everyday and leave a lasting impression.<\/p><p>Luxury fragrances, without the designer price.<\/p>","button_1_text":"ABOUT US","button_1_link":"shopify:\/\/pages\/about-us","button_1_style":"solid","button_2_text":"","button_2_link":"","button_2_style":"solid"}},"newsletter":{"type":"newsletter","disabled":true,"settings":{"color_scheme":"scheme-2","separate_section_with_border":false,"image_size":"md","subheading":"","title":"<strong>SIGN UP & SAVE<\/strong>","content":"<p>Join our newsletter for the latest news, product releases and special offers.<\/p>","button_text":"JOIN SCENT HAUS","overlay_color":"#000000","overlay_opacity":0}},"custom_liquid_JJMTdD":{"type":"custom-liquid","name":"t:sections.custom_liquid.presets.custom_liquid.name","settings":{"color_scheme":"scheme-2","separate_section_with_border":false,"remove_vertical_spacing":true,"remove_horizontal_spacing":true,"liquid":"<h2>Stay up to date<\/h2>\nSign up for exclusive offers, new in & so much more.\n<div class=\"klaviyo-form-UULAD9\"><\/div>","text_alignment":"center"}}},"order":["1767181831ad2e3832","slideshow","rich_text_77VFkm","multi_column_khdAH4","featured_collections_CRJ88A","media_grid_33Tbkp","featured_collections_cDxXhq","multiple_media_with_text_dNVyFw","newsletter","custom_liquid_JJMTdD"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1767181831ad2e3832": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_9be8eb7_iY4tX3": {
+          "type": "ai_gen_block_9be8eb7",
+          "settings": {
+            "slide_height_mobile": 500,
+            "slide_height_desktop": 700,
+            "content_vertical_alignment": "flex-end",
+            "content_horizontal_alignment": "center",
+            "text_alignment": "center",
+            "subheading_size": 14,
+            "heading_size_mobile": 32,
+            "heading_size_desktop": 56,
+            "text_size": 16,
+            "background_color": "#000000",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "button_background": "#ffffff",
+            "button_text_color": "#1c1c1c",
+            "button_hover_background": "#f4f4f4",
+            "button_secondary_background": "#ffffff",
+            "button_secondary_text_color": "#1c1c1c",
+            "button_secondary_hover_background": "#ffffff1a",
+            "button_border_radius": 0,
+            "show_arrows": false,
+            "show_dots": false,
+            "autoplay": false,
+            "autoplay_speed": 5,
+            "slide_1_enabled": true,
+            "slide_1_image": "shopify://shop_images/Valentines_Banner_1.jpg",
+            "slide_1_video_url": "",
+            "slide_1_show_overlay": false,
+            "slide_1_subheading": "",
+            "slide_1_heading": "",
+            "slide_1_text": "",
+            "slide_1_button_text": "SHOP NOW",
+            "slide_1_button_link": "shopify://collections/valentines-gifting",
+            "slide_1_button_2_text": "",
+            "slide_1_button_2_link": "",
+            "slide_2_enabled": false,
+            "slide_2_video_url": "",
+            "slide_2_show_overlay": true,
+            "slide_2_subheading": "",
+            "slide_2_heading": "",
+            "slide_2_text": "",
+            "slide_2_button_text": "",
+            "slide_2_button_link": "",
+            "slide_2_button_2_text": "",
+            "slide_2_button_2_link": "",
+            "slide_3_enabled": false,
+            "slide_3_video_url": "",
+            "slide_3_show_overlay": true,
+            "slide_3_subheading": "",
+            "slide_3_heading": "",
+            "slide_3_text": "",
+            "slide_3_button_text": "",
+            "slide_3_button_link": "",
+            "slide_3_button_2_text": "",
+            "slide_3_button_2_link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_9be8eb7_iY4tX3"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true
+      }
+    },
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "image_reF4re": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Hero.jpg",
+            "mobile_image": "shopify://shop_images/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Hero.jpg",
+            "subheading": "FOREVER TIMELESS",
+            "title": "OUD HAS NEVER BEEN SO MYSTICAL",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "content_max_width": 520,
+            "button_1_text": "FOR HIM",
+            "button_1_link": "shopify://collections/mens",
+            "button_1_style": "solid",
+            "button_1_background": "#ffffff",
+            "button_1_text_color": "#1c1c1c",
+            "button_2_text": "FOR HER",
+            "button_2_link": "shopify://collections/womens",
+            "button_2_style": "solid",
+            "button_2_background": "#ffffff",
+            "button_2_text_color": "#000000",
+            "background": "",
+            "background_opacity": 50,
+            "text_color": "#ffffff",
+            "border_color": "",
+            "gradient_overlay": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_reF4re"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "allow_transparent_header": false,
+        "show_next_section_button": true,
+        "media_size": "fill",
+        "show_initial_transition": true,
+        "autoplay": true,
+        "autoplay_pause_on_video": true,
+        "cycle_speed": 5,
+        "background": "#000000",
+        "controls_color": "#ffffff"
+      }
+    },
+    "rich_text_77VFkm": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_fCKhQR": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_T4G3cJ": {
+          "type": "heading",
+          "settings": {
+            "text": "<strong>CRAFTED FOR THE MOMENT</strong>",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_fHp9w4": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Welcome to Scent Haus, the place to be inspired by those who have designed the best fragrances and scents from around the world. We craft fragrances to enhance every moment, from elevating your every day to signature pieces for those special days. Your signature scent is waiting for you...</p>"
+          }
+        },
+        "button_HdeNPz": {
+          "type": "button",
+          "settings": {
+            "style": "solid",
+            "text": "FIND YOUR FRAGRANCE",
+            "url": "shopify://pages/find-your-perfect-scent",
+            "background": "#000000",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_fCKhQR",
+        "heading_T4G3cJ",
+        "richtext_fHp9w4",
+        "button_HdeNPz"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": true,
+        "content_width": "sm",
+        "text_position": "center",
+        "remove_vertical_spacing": false
+      }
+    },
+    "multi_column_khdAH4": {
+      "type": "multi-column",
+      "blocks": {
+        "image_with_text_BVCyh7": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Cat_For_Him.jpg",
+            "title": "FRAGRANCE FOR HIM",
+            "heading_tag": "h6",
+            "content": "",
+            "link_url": "shopify://collections/mens",
+            "link_text": ""
+          }
+        },
+        "image_with_text_7TP8AF": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Cat_For_Her.jpg",
+            "title": "fragrance for her",
+            "heading_tag": "h6",
+            "content": "",
+            "link_url": "shopify://collections/womens",
+            "link_text": ""
+          }
+        },
+        "image_with_text_tcqaAP": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Cat_For_All.jpg",
+            "title": "fragrance for all",
+            "heading_tag": "h6",
+            "content": "",
+            "link_url": "shopify://collections/unisex",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_BVCyh7",
+        "image_with_text_7TP8AF",
+        "image_with_text_tcqaAP"
+      ],
+      "name": "t:sections.multi_column.presets.multi_column.name",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": false,
+        "columns_per_row": 3,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "center",
+        "text_alignment": "center",
+        "spacing": "sm",
+        "subheading": "",
+        "title": "<strong>EXPLORE THE CREATIONS</strong>",
+        "content": ""
+      }
+    },
+    "featured_collections_CRJ88A": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_pWNiCc": {
+          "type": "collection",
+          "settings": {
+            "collection": "all",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": "SHOP BEST SELLERS"
+          }
+        },
+        "collection_kh7ReE": {
+          "type": "collection",
+          "settings": {
+            "collection": "mens",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": "View all"
+          }
+        },
+        "collection_GVwyyg": {
+          "type": "collection",
+          "settings": {
+            "collection": "womens",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_pWNiCc",
+        "collection_kh7ReE",
+        "collection_GVwyyg"
+      ],
+      "custom_css": [
+        ".h2,:where(.prose h2) {font-size: 15px; line-height: 1.5;}"
+      ],
+      "name": "t:sections.featured_collections.presets.featured_collections.name",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": true,
+        "hide_product_information": false,
+        "stack_products": false,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": "<strong>THE FAVOURITES</strong>"
+      }
+    },
+    "media_grid_33Tbkp": {
+      "type": "media-grid",
+      "blocks": {
+        "image_Apwza7": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Refreshing_Zests_With_Gradient.jpg",
+            "column_count": "8",
+            "row_count": 2,
+            "title": "REFRESHING ZESTS",
+            "heading_tag": "h4",
+            "content": "",
+            "link_text": "",
+            "link_url": "shopify://collections/citrus-fragrance",
+            "link_style": "link",
+            "text_position": "place-self-end-center text-center",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_mFP9nW": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Cat_Sweet_Florals_With_Gradient.jpg",
+            "column_count": "4",
+            "row_count": 1,
+            "title": "SWEET FLORALS",
+            "heading_tag": "h4",
+            "content": "",
+            "link_text": "",
+            "link_url": "shopify://collections/fruity-fragrance",
+            "link_style": "link",
+            "text_position": "place-self-end-center text-center",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_4gmrGn": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Cat_Earth_Tones_With_Gradient.jpg",
+            "column_count": "4",
+            "row_count": 1,
+            "title": "EARTH TONES",
+            "heading_tag": "h4",
+            "content": "",
+            "link_text": "",
+            "link_url": "shopify://collections/woody-fragrances",
+            "link_style": "link",
+            "text_position": "place-self-end-center text-center",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_Apwza7",
+        "image_mFP9nW",
+        "image_4gmrGn"
+      ],
+      "custom_css": [],
+      "name": "t:sections.media_grid.presets.media_grid.name",
+      "settings": {
+        "color_scheme": "scheme-35540d49-3c79-4369-8fd7-cf7d5cd46899",
+        "separate_section_with_border": true,
+        "desktop_row_height": 290,
+        "mobile_row_height": 180,
+        "section_width": "lg",
+        "spacing": "md",
+        "subheading": "",
+        "title": "<strong>FIND YOUR FLAVOUR</strong>",
+        "content": ""
+      }
+    },
+    "featured_collections_cDxXhq": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_FeTR9n": {
+          "type": "collection",
+          "settings": {
+            "collection": "bundles",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": "View all"
+          }
+        },
+        "collection_nDU7Rg": {
+          "type": "collection",
+          "settings": {
+            "collection": "mens",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": "View all"
+          }
+        },
+        "collection_LxbTnh": {
+          "type": "collection",
+          "settings": {
+            "collection": "womens",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": "View all"
+          }
+        },
+        "collection_8fRG8H": {
+          "type": "collection",
+          "settings": {
+            "collection": "unisex",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_FeTR9n",
+        "collection_nDU7Rg",
+        "collection_LxbTnh",
+        "collection_8fRG8H"
+      ],
+      "name": "t:sections.featured_collections.presets.featured_collections.name",
+      "settings": {
+        "color_scheme": "scheme-35540d49-3c79-4369-8fd7-cf7d5cd46899",
+        "separate_section_with_border": true,
+        "hide_product_information": false,
+        "stack_products": false,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": ""
+      }
+    },
+    "multiple_media_with_text_dNVyFw": {
+      "type": "multiple-media-with-text",
+      "blocks": {
+        "image_YdC8Mr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Scent_Haus_Image_1.jpg",
+            "rotation": 0
+          }
+        },
+        "image_CapyUd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/J340_Scent_Haus_Website_Design_Homepage_Desktop_V1_Scent_Haus_Image_2.jpg",
+            "rotation": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_YdC8Mr",
+        "image_CapyUd"
+      ],
+      "name": "t:sections.multiple_media_with_text.presets.multiple_media_with_text.name",
+      "settings": {
+        "color_scheme": "",
+        "reveal_on_scroll": true,
+        "separate_section_with_border": true,
+        "media_position_desktop": "after_text",
+        "media_position_mobile": "before_text",
+        "media_layout": "overlap",
+        "media_alignment": "center",
+        "media_alignment_offset": 0,
+        "media_mobile_alignment_offset": 0,
+        "text_alignment": "center",
+        "subheading": "WELCOME TO",
+        "title": "<strong>SCENT HAUS</strong>",
+        "content": "<p>At Scent Haus, we believe fragrance should make a statement. Discover refined, long-lasting scents that elevate your everyday and leave a lasting impression.</p><p>Luxury fragrances, without the designer price.</p>",
+        "button_1_text": "ABOUT US",
+        "button_1_link": "shopify://pages/about-us",
+        "button_1_style": "solid",
+        "button_2_text": "",
+        "button_2_link": "",
+        "button_2_style": "solid"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": false,
+        "image_size": "md",
+        "subheading": "",
+        "title": "<strong>SIGN UP & SAVE</strong>",
+        "content": "<p>Join our newsletter for the latest news, product releases and special offers.</p>",
+        "button_text": "JOIN SCENT HAUS",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "custom_liquid_JJMTdD": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom_liquid.presets.custom_liquid.name",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": false,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "liquid": "<h2>Stay up to date</h2>\nSign up for exclusive offers, new in & so much more.\n<div class=\"klaviyo-form-UULAD9\"></div>",
+        "text_alignment": "center"
+      }
+    }
+  },
+  "order": [
+    "1767181831ad2e3832",
+    "slideshow",
+    "rich_text_77VFkm",
+    "multi_column_khdAH4",
+    "featured_collections_CRJ88A",
+    "media_grid_33Tbkp",
+    "featured_collections_cDxXhq",
+    "multiple_media_with_text_dNVyFw",
+    "newsletter",
+    "custom_liquid_JJMTdD"
+  ]
+}
