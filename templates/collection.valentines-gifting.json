@@ -9,8 +9,41 @@
  */
 {
   "sections": {
+    "1770289896023bbde3": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_757a94b_fQcpyk": {
+          "type": "ai_gen_block_757a94b",
+          "settings": {
+            "image_1": "shopify://shop_images/Noir_Bundle_Banner.jpg",
+            "link_1": "shopify://products/the-noir-collection-for-him",
+            "image_2": "shopify://shop_images/Romantic_Bundle_Banner.jpg",
+            "link_2": "shopify://products/the-romantic-collection-for-her",
+            "max_width": 1200,
+            "gap": 16,
+            "image_fit": "contain",
+            "aspect_ratio": "75",
+            "border_radius": 0,
+            "mobile_layout": "column",
+            "mobile_gap": 12,
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_757a94b_fQcpyk"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": false,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true
+      }
+    },
     "collection-banner": {
       "type": "collection-banner",
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-2",
         "image_size": "auto",
@@ -150,6 +183,7 @@
     }
   },
   "order": [
+    "1770289896023bbde3",
     "collection-banner",
     "blocks_LPUw9m",
     "main",
