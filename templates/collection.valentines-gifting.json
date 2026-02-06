@@ -9,6 +9,44 @@
  */
 {
   "sections": {
+    "177037527896b6a5bd": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_f6f531e_NAGLF8": {
+          "type": "ai_gen_block_f6f531e",
+          "settings": {
+            "image_1": "shopify://shop_images/Noir_Bundle_Banner.jpg",
+            "image_1_link": "shopify://products/the-noir-collection-for-him",
+            "text_1": "<p>A refined collection of fragrances for him. Crafted for modern presence and confidence featuring bold cedar and vetiver woods, warm amber resin, and rich spicy undertones.</p>",
+            "image_2": "shopify://shop_images/Romantic_Bundle_Banner.jpg",
+            "image_2_link": "shopify://products/the-romantic-collection-for-her",
+            "text_2": "<p>A curated selection of elegant fragrances for her. Each scent features soft floral top notes, luminous blossoms of jasmine and rose, and warm amber or vanilla dry downs.</p>",
+            "aspect_ratio": "4 / 3",
+            "image_fit": "contain",
+            "background_color": "#ffffff",
+            "gap": 20,
+            "gap_mobile": 20,
+            "vertical_spacing": 10,
+            "desktop_width_percent": 100,
+            "border_radius": 0,
+            "text_spacing": 16,
+            "text_size": 14,
+            "text_alignment": "center",
+            "text_color": "#1c1c1c"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_f6f531e_NAGLF8"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": false
+      }
+    },
     "1770289896023bbde3": {
       "type": "_blocks",
       "blocks": {
@@ -34,6 +72,7 @@
       "block_order": [
         "ai_gen_block_757a94b_fQcpyk"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-2",
         "separate_section_with_border": false,
@@ -183,6 +222,7 @@
     }
   },
   "order": [
+    "177037527896b6a5bd",
     "1770289896023bbde3",
     "collection-banner",
     "blocks_LPUw9m",
