@@ -43,6 +43,7 @@
       "block_order": [
         "image_thzGre"
       ],
+      "disabled": true,
       "name": "t:sections.slideshow.presets.slideshow.name",
       "settings": {
         "allow_transparent_header": true,
@@ -64,12 +65,12 @@
           "settings": {
             "slide_height_mobile": 500,
             "slide_height_desktop": 500,
-            "content_vertical_alignment": "flex-end",
+            "content_vertical_alignment": "center",
             "content_horizontal_alignment": "center",
             "text_alignment": "center",
             "subheading_size": 14,
             "heading_size_mobile": 32,
-            "heading_size_desktop": 56,
+            "heading_size_desktop": 34,
             "text_size": 16,
             "background_color": "#000000",
             "text_color": "#ffffff",
@@ -87,14 +88,14 @@
             "autoplay": false,
             "autoplay_speed": 5,
             "slide_1_enabled": true,
-            "slide_1_image": "shopify://shop_images/Valentines_Banner_1.jpg",
+            "slide_1_video_shopify": "shopify://files/videos/Scent Haus_Homepage Hero Video_V1.mp4",
             "slide_1_video_url": "",
             "slide_1_show_overlay": false,
             "slide_1_subheading": "",
-            "slide_1_heading": "",
+            "slide_1_heading": "INSPIRED BY ICONS",
             "slide_1_text": "",
             "slide_1_button_text": "SHOP NOW",
-            "slide_1_button_link": "shopify://collections/valentines-gifting",
+            "slide_1_button_link": "shopify://collections/all",
             "slide_1_button_2_text": "",
             "slide_1_button_2_link": "",
             "slide_2_enabled": false,
@@ -124,7 +125,6 @@
       "block_order": [
         "ai_gen_block_9be8eb7_iY4tX3"
       ],
-      "disabled": true,
       "settings": {
         "color_scheme": "",
         "separate_section_with_border": true,
