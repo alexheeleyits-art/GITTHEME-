@@ -73,6 +73,7 @@
     },
     "custom_liquid_UT6pmA": {
       "type": "custom-liquid",
+      "disabled": true,
       "custom_css": [
         ".inspired-by-item a b {text-decoration: underline; /* force underline */}",
         ".inspired-by-seo {font-size: 11px; /* slightly smaller */}"
