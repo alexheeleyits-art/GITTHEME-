@@ -75,7 +75,7 @@
             "background_color": "#000000",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 30,
+            "overlay_opacity": 20,
             "button_background": "#ffffff",
             "button_text_color": "#1c1c1c",
             "button_hover_background": "#f4f4f4",
