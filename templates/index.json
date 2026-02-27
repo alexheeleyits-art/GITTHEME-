@@ -15,15 +15,15 @@
         "image_thzGre": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Valentines_Banner_1.jpg",
-            "mobile_image": "shopify://shop_images/Mobile_15.jpg",
+            "image": "shopify://shop_images/Desktop_Banner.jpg",
+            "mobile_image": "shopify://shop_images/Mobile_17.jpg",
             "subheading": "",
             "title": "",
             "mobile_text_position": "place-self-end-center text-center",
             "desktop_text_position": "sm:place-self-end-center sm:text-center",
             "content_max_width": 780,
             "button_1_text": "SHOP NOW",
-            "button_1_link": "shopify://collections/valentines-gifting",
+            "button_1_link": "shopify://collections/all",
             "button_1_style": "solid",
             "button_1_background": "#ffffff",
             "button_1_text_color": "#000000",
@@ -43,7 +43,6 @@
       "block_order": [
         "image_thzGre"
       ],
-      "disabled": true,
       "name": "t:sections.slideshow.presets.slideshow.name",
       "settings": {
         "allow_transparent_header": true,
@@ -125,6 +124,7 @@
       "block_order": [
         "ai_gen_block_9be8eb7_iY4tX3"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "",
         "separate_section_with_border": true,
