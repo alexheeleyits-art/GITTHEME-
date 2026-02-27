@@ -15,8 +15,8 @@
         "image_thzGre": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Desktop_Banner.jpg",
-            "mobile_image": "shopify://shop_images/Mobile_17.jpg",
+            "image": "shopify://shop_images/Desktop_Banner_1.jpg",
+            "mobile_image": "shopify://shop_images/Mobile_18.jpg",
             "subheading": "",
             "title": "",
             "mobile_text_position": "place-self-end-center text-center",
