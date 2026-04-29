@@ -146,7 +146,7 @@
             "desktop_text_position": "sm:place-self-center sm:text-center",
             "content_max_width": 520,
             "button_1_text": "FOR HIM",
-            "button_1_link": "shopify://collections/mens",
+            "button_1_link": "shopify://collections/inspired-fragrances-for-men",
             "button_1_style": "solid",
             "button_1_background": "#ffffff",
             "button_1_text_color": "#1c1c1c",
@@ -239,7 +239,7 @@
             "title": "FRAGRANCE FOR HIM",
             "heading_tag": "h6",
             "content": "",
-            "link_url": "shopify://collections/mens",
+            "link_url": "shopify://collections/inspired-fragrances-for-men",
             "link_text": ""
           }
         },
@@ -302,7 +302,7 @@
         "collection_kh7ReE": {
           "type": "collection",
           "settings": {
-            "collection": "mens",
+            "collection": "inspired-fragrances-for-men",
             "products_count": 8,
             "title": "",
             "link_url": "",
@@ -434,7 +434,7 @@
         "collection_nDU7Rg": {
           "type": "collection",
           "settings": {
-            "collection": "mens",
+            "collection": "inspired-fragrances-for-men",
             "products_count": 8,
             "title": "",
             "link_url": "",
