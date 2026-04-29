@@ -47,7 +47,7 @@
             "slide_1_heading": "A COLLECTION INSPIRED BY ICONS",
             "slide_1_text": "",
             "slide_1_button_text": "FOR HER",
-            "slide_1_button_link": "shopify://collections/womens",
+            "slide_1_button_link": "shopify://collections/womens-inspired-perfumes",
             "slide_1_button_2_text": "FOR HIM",
             "slide_1_button_2_link": "shopify://collections/inspired-fragrances-for-men",
             "slide_2_enabled": false,
@@ -103,7 +103,7 @@
             "button_1_background": "#ffffff",
             "button_1_text_color": "#1c1c1c",
             "button_2_text": "FOR HER",
-            "button_2_link": "shopify://collections/womens",
+            "button_2_link": "shopify://collections/womens-inspired-perfumes",
             "button_2_style": "solid",
             "button_2_background": "#ffffff",
             "button_2_text_color": "#000000",
@@ -202,7 +202,7 @@
             "title": "fragrance for her",
             "heading_tag": "h6",
             "content": "",
-            "link_url": "shopify://collections/womens",
+            "link_url": "shopify://collections/womens-inspired-perfumes",
             "link_text": ""
           }
         },
@@ -264,7 +264,7 @@
         "collection_GVwyyg": {
           "type": "collection",
           "settings": {
-            "collection": "womens",
+            "collection": "womens-inspired-perfumes",
             "products_count": 8,
             "title": "",
             "link_url": "",
@@ -396,7 +396,7 @@
         "collection_LxbTnh": {
           "type": "collection",
           "settings": {
-            "collection": "womens",
+            "collection": "womens-inspired-perfumes",
             "products_count": 8,
             "title": "",
             "link_url": "",
